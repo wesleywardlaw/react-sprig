@@ -62,9 +62,19 @@ export const Button: React.FC<ButtonProps> = ({
   const iconContent =
     icon && !loading ? (
       iconPosition === 'before' ? (
-        <span className='mr-2'>{icon}</span>
+        <span
+          data-testid='icon'
+          className='mr-2'
+        >
+          {icon}
+        </span>
       ) : (
-        <span className='ml-2'>{icon}</span>
+        <span
+          data-testid='icon'
+          className='ml-2'
+        >
+          {icon}
+        </span>
       )
     ) : null
 
