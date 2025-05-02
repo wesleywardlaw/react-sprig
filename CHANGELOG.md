@@ -2,4 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/wesleywardlaw/component-library/compare/v0.0.2...v0.0.3) (2025-05-02)
+
+
+### Features
+
+* create initial Button component ([fa34e3e](https://github.com/wesleywardlaw/component-library/commit/fa34e3e1f019f81d0aee2127001c9e84aa40cef7))
+* update theme in tailwind config and refactor Button ([043e0ec](https://github.com/wesleywardlaw/component-library/commit/043e0ec43ebc03b01e7fd5a2f664f649cda1e8f4))
+
 ### [0.0.2](https://github.com/wesleywardlaw/component-library/compare/v0.0.1...v0.0.2) (2025-05-01)
