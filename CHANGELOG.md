@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/wesleywardlaw/component-library/compare/v0.0.3...v0.0.4) (2025-05-03)
+
+
+### Bug Fixes
+
+* stop vitest from running playwright tests ([74fa1fc](https://github.com/wesleywardlaw/component-library/commit/74fa1fc7dcd76ea58da7aef15c51e1657bd600ad))
+
 ### [0.0.3](https://github.com/wesleywardlaw/component-library/compare/v0.0.2...v0.0.3) (2025-05-02)
 
 
