@@ -90,20 +90,5 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  },
-  "release": {
-    "preset": "conventionalcommits",
-    "types": [
-      {
-        "type": "feat",
-        "section": "Features",
-        "bump": "minor"
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes",
-        "bump": "patch"
-      }
-    ]
   }
 }
