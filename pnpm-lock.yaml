@@ -15,6 +15,9 @@ importers:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
+      '@axe-core/playwright':
+        specifier: ^4.10.1
+        version: 4.10.1(playwright-core@1.52.0)
       '@chromatic-com/storybook':
         specifier: '3'
         version: 3.2.6(react@19.1.0)(storybook@8.6.12(prettier@3.5.3))
@@ -27,6 +30,9 @@ importers:
       '@eslint/js':
         specifier: ^9.22.0
         version: 9.25.1
+      '@playwright/test':
+        specifier: ^1.52.0
+        version: 1.52.0
       '@storybook/addon-essentials':
         specifier: 8.6.12
         version: 8.6.12(@types/react@19.1.2)(storybook@8.6.12(prettier@3.5.3))
@@ -114,9 +120,6 @@ importers:
       jsdom:
         specifier: ^26.1.0
         version: 26.1.0
-      playwright:
-        specifier: ^1.52.0
-        version: 1.52.0
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -230,6 +233,11 @@ packages:
   '@ast-grep/napi@0.36.3':
     resolution: {integrity: sha512-ExypohE8L7FvKBHxu7UpwcV9XVfyS+AqNZKyKIfxYwJyD9l7Gw6pmMYd7J2uopJsPEIUf44/emEFds6nFUx/dw==}
     engines: {node: '>= 10'}
+
+  '@axe-core/playwright@4.10.1':
+    resolution: {integrity: sha512-EV5t39VV68kuAfMKqb/RL+YjYKhfuGim9rgIaQ6Vntb2HgaCaau0h98Y3WEUqW1+PbdzxDtDNjFAipbtZuBmEA==}
+    peerDependencies:
+      playwright-core: '>= 1.0.0'
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -721,6 +729,11 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@playwright/test@1.52.0':
+    resolution: {integrity: sha512-uh6W7sb55hl7D6vsAeA+V2p5JnlAqzhqFyF0VcJkKZXkgnFcVG9PziERRHQfPLfNGx1C292a4JqbWzhR8L4R1g==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
@@ -1425,6 +1438,10 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+
+  axe-core@4.10.3:
+    resolution: {integrity: sha512-Xm7bpRXnDSX2YE2YFfBk2FnF0ep6tmG7xPh8iHee8MIcrgq762Nkce856dYtJYLkuIoYZvGfTs/PbZhideTcEg==}
+    engines: {node: '>=4'}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -4002,6 +4019,11 @@ snapshots:
       '@ast-grep/napi-win32-ia32-msvc': 0.36.3
       '@ast-grep/napi-win32-x64-msvc': 0.36.3
 
+  '@axe-core/playwright@4.10.1(playwright-core@1.52.0)':
+    dependencies:
+      axe-core: 4.10.3
+      playwright-core: 1.52.0
+
   '@babel/code-frame@7.26.2':
     dependencies:
       '@babel/helper-validator-identifier': 7.25.9
@@ -4502,6 +4524,10 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@playwright/test@1.52.0':
+    dependencies:
+      playwright: 1.52.0
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -5314,6 +5340,8 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
+
+  axe-core@4.10.3: {}
 
   balanced-match@1.0.2: {}
 
