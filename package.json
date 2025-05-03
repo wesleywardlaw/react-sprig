@@ -19,7 +19,8 @@
     "release": "standard-version",
     "prepare": "husky install",
     "build:css": "tailwindcss -i ./src/assets/styles.css -o ./dist/styles.css --minify",
-    "test:playwright": "playwright test"
+    "test:playwright": "playwright test",
+    "verdaccio:publish": "publish --registry http://localhost:4873"
   },
   "files": [
     "dist"
