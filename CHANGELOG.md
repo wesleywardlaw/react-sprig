@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/wesleywardlaw/component-library/compare/v0.0.6...v0.0.7) (2025-05-03)
+
+
+### Features
+
+* verdaccio script ([a7e54c5](https://github.com/wesleywardlaw/component-library/commit/a7e54c5c6462b8b34a5594228782da9de310ad61))
+
 ### [0.0.6](https://github.com/wesleywardlaw/component-library/compare/v0.0.5...v0.0.6) (2025-05-03)
 
 ### [0.0.5](https://github.com/wesleywardlaw/component-library/compare/v0.0.4...v0.0.5) (2025-05-03)
