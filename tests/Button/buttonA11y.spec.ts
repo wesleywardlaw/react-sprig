@@ -4,6 +4,13 @@ import { AxeBuilder } from '@axe-core/playwright'
 const storyUrls = [
   'http://localhost:6006/iframe.html?globals=&args=&id=components-button--default&viewMode=story',
   'http://localhost:6006/iframe.html?globals=&args=&id=components-button--disabled&viewMode=story',
+  'http://localhost:6006/iframe.html?globals=&args=&id=components-button--loading&viewMode=story',
+  'http://localhost:6006/iframe.html?globals=&args=&id=components-button--large-button&viewMode=story',
+  'http://localhost:6006/iframe.html?globals=&args=&id=components-button--icon-after&viewMode=story',
+  'http://localhost:6006/iframe.html?globals=&args=&id=components-button--full-width-button&viewMode=story',
+  'http://localhost:6006/iframe.html?args=&globals=&id=components-button--small-button&viewMode=story',
+  'http://localhost:6006/iframe.html?args=&globals=&id=components-button--outline-button&viewMode=story',
+  'http://localhost:6006/iframe.html?args=&globals=&id=components-button--danger-button&viewMode=story',
 ]
 
 for (const url of storyUrls) {
