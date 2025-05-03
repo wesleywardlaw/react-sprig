@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/wesleywardlaw/component-library/compare/v0.0.4...v0.0.5) (2025-05-03)
+
+
+### Features
+
+* create Form component with basic Input and Submit ([718108d](https://github.com/wesleywardlaw/component-library/commit/718108d3ac5292f94035381bcd650e62c01fdf77))
+
 ### [0.0.4](https://github.com/wesleywardlaw/component-library/compare/v0.0.3...v0.0.4) (2025-05-03)
 
 
