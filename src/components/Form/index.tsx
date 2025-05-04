@@ -48,7 +48,7 @@ interface FormProps<TFieldValues extends FieldValues> {
   id?: string
 }
 
-const Form = <TFieldValues extends FieldValues>({
+export const Form = <TFieldValues extends FieldValues>({
   children,
   schema,
   onSubmit,
@@ -265,5 +265,3 @@ const Submit = ({ children, className = '' }: SubmitProps) => {
 }
 
 Form.Submit = Submit
-
-export default Form

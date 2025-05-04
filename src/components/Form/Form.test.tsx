@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { z } from 'zod'
-import Form from './index'
+import { Form } from './index'
 
 describe('Form Component', () => {
   const schema = z.object({

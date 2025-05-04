@@ -19,7 +19,7 @@
     "prepare": "husky install",
     "build:css": "tailwindcss -i ./src/assets/styles.css -o ./dist/styles.css --minify",
     "test:playwright": "playwright test",
-    "verdaccio": "publish --registry http://localhost:4873"
+    "verdaccio": "pnpm publish --registry http://localhost:4873 --no-git-checks"
   },
   "files": [
     "dist"
