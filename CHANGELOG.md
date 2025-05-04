@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.0.7...v0.1.0) (2025-05-04)
+
+
+### Features
+
+* add versionrc ([1ca8536](https://www.github.com/wesleywardlaw/component-library/commit/1ca85362e78a25bb93182e37cbd7eb132740ba26))
+* switch to release-please ([8342b70](https://www.github.com/wesleywardlaw/component-library/commit/8342b70fc79208e18f867e94e33c53cf88f3c556))
+* update versionrc ([5c6fba3](https://www.github.com/wesleywardlaw/component-library/commit/5c6fba30320a4fdbcd0fc91117f0550dd00a05b8))
+
 ### [0.0.7](https://github.com/wesleywardlaw/component-library/compare/v0.0.6...v0.0.7) (2025-05-03)
 
 
