@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.1.0...v0.2.0) (2025-05-05)
+
+
+### Features
+
+* add Form.Select ([f49c2f8](https://www.github.com/wesleywardlaw/component-library/commit/f49c2f8e44f4e59c4361da160408dbcb8cd0ab69))
+
 ## [0.1.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.0.7...v0.1.0) (2025-05-04)
 
 
