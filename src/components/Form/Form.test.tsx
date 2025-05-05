@@ -219,4 +219,125 @@ describe('Form Component', () => {
       password: 'password123',
     })
   })
+
+  it('renders the select field with options and handles selection', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          country: z.string().nonempty('Country is required'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='country'>
+          <Form.Label htmlFor='country'>Country</Form.Label>
+          <Form.Select
+            name='country'
+            options={[
+              { value: '', label: 'Select a country' },
+              { value: 'usa', label: 'USA' },
+              { value: 'canada', label: 'Canada' },
+            ]}
+          />
+          <Form.Error name='country' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    expect(screen.getByLabelText(/country/i)).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: /select a country/i })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: /usa/i })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: /canada/i })).toBeInTheDocument()
+
+    await user.selectOptions(screen.getByLabelText(/country/i), 'usa')
+    expect(screen.getByLabelText(/country/i)).toHaveValue('usa')
+
+    await user.click(screen.getByRole('button', { name: /submit/i }))
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ country: 'usa' })
+    })
+  })
+
+  it('disables the submit button when the form is invalid', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          country: z.string().nonempty('Country is required'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='country'>
+          <Form.Label htmlFor='country'>Country</Form.Label>
+          <Form.Select
+            name='country'
+            options={[
+              { value: '', label: 'Select a country' },
+              { value: 'usa', label: 'USA' },
+              { value: 'canada', label: 'Canada' },
+            ]}
+          />
+          <Form.Error name='country' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Initially, the submit button should be disabled
+    expect(submitButton).toBeDisabled()
+
+    // Select a valid option
+    await user.selectOptions(screen.getByLabelText(/country/i), 'usa')
+
+    // The submit button should now be enabled
+    expect(submitButton).toBeEnabled()
+
+    // Submit the form
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ country: 'usa' })
+    })
+  })
+
+  it('renders a disabled option in the select field', async () => {
+    render(
+      <Form
+        schema={z.object({
+          country: z.string().nonempty('Country is required'),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='country'>
+          <Form.Label htmlFor='country'>Country</Form.Label>
+          <Form.Select
+            name='country'
+            options={[
+              { value: '', label: 'Select a country', disabled: true },
+              { value: 'usa', label: 'USA' },
+              { value: 'canada', label: 'Canada' },
+            ]}
+          />
+          <Form.Error name='country' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const disabledOption = screen.getByRole('option', { name: /select a country/i })
+
+    // Check that the option is disabled
+    expect(disabledOption).toBeDisabled()
+  })
 })
