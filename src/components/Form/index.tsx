@@ -1,39 +1,19 @@
 'use client'
 
-import React, { createContext, useContext, useId, ReactNode } from 'react'
-import {
-  useForm,
-  SubmitHandler,
-  FieldValues,
-  UseFormReturn,
-  FieldError,
-  FieldPath,
-} from 'react-hook-form'
+import React, { useId, ReactNode } from 'react'
+import { useForm, SubmitHandler, FieldValues, FieldPath } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-// === CONTEXT ===
-
-type FormContextValue<TFieldValues extends FieldValues> = {
-  formId: string
-  form: UseFormReturn<TFieldValues>
-  isSubmitting: boolean
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FormContext = createContext<FormContextValue<any> | null>(null)
-
-const useFormContext = <TFieldValues extends FieldValues>(): FormContextValue<TFieldValues> => {
-  const context = useContext(FormContext)
-  if (context === null) {
-    const error = new Error('useFormContext must be used within a Form component') as Error & {
-      name: string
-    }
-    error.name = 'FormContextError'
-    throw error
-  }
-  return context as FormContextValue<TFieldValues>
-}
+import { FormContext } from './Context'
+import { Submit } from './Submit'
+import { Checkbox } from './Checkbox'
+import { CheckboxGroup } from './CheckboxGroup'
+import { FieldErrorComponent } from './FieldErrorComponent'
+import { Select } from './Select'
+import { Input } from './Input'
+import { Label } from './Label'
+import { Field } from './Field'
 
 // === ROOT COMPONENT ===
 
@@ -123,222 +103,18 @@ export const Form = <TFieldValues extends FieldValues>({
   )
 }
 
-// === FIELD COMPONENT ===
-
-interface FieldProps {
-  children: ReactNode
-  name: string
-  className?: string
-}
-
-const Field = ({ children, name, className = '' }: FieldProps) => (
-  <div
-    className={`space-y-1 ${className}`}
-    data-field-name={name}
-  >
-    {children}
-  </div>
-)
-
 Form.Field = Field
-
-// === LABEL COMPONENT ===
-
-interface LabelProps {
-  children: ReactNode
-  htmlFor?: string
-  className?: string
-}
-
-const Label = ({ children, htmlFor, className = '' }: LabelProps) => {
-  const { formId } = useFormContext()
-  const defaultHtmlFor = formId ? `${formId}-${htmlFor}` : htmlFor
-
-  return (
-    <label
-      htmlFor={defaultHtmlFor}
-      className={`block text-sm font-medium text-gray-700 mb-1 ${className}`}
-    >
-      {children}
-    </label>
-  )
-}
 
 Form.Label = Label
 
-// === INPUT COMPONENT ===
-
-interface InputProps<TFieldValues extends FieldValues> {
-  name: FieldPath<TFieldValues>
-  type?: string
-  placeholder?: string
-  className?: string
-  id?: string
-}
-
-const Input = <TFieldValues extends FieldValues>({
-  name,
-  type = 'text',
-  placeholder,
-  className = '',
-  id,
-}: InputProps<TFieldValues>) => {
-  const { formId, form } = useFormContext<TFieldValues>()
-  const inputId = id || `${formId}-${name}`
-
-  return (
-    <input
-      id={inputId}
-      type={type}
-      placeholder={placeholder}
-      {...form.register(name)}
-      className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 ${className}`}
-    />
-  )
-}
-
 Form.Input = Input
-
-// === SELECT COMPONENT ===
-
-interface SelectOption {
-  value: string
-  label: string
-  disabled?: boolean
-}
-
-interface SelectProps<TFieldValues extends FieldValues> {
-  name: FieldPath<TFieldValues>
-  options: SelectOption[]
-  className?: string
-  id?: string
-  defaultValue?: string
-  disabled?: boolean
-}
-
-const Select = <TFieldValues extends FieldValues>({
-  name,
-  options,
-  className = '',
-  id,
-  defaultValue,
-  disabled = false,
-}: SelectProps<TFieldValues> & { label?: string; labelId?: string }) => {
-  const { formId, form } = useFormContext<TFieldValues>()
-  const selectId = id || `${formId}-${name}`
-  const error = form.formState.errors[name]
-  const errorMessage = typeof error?.message === 'string' ? error.message : undefined
-  const errorId = errorMessage ? `${selectId}-error` : undefined
-
-  // Ensure default value is set correctly when provided
-  React.useEffect(() => {
-    if (defaultValue !== undefined) {
-      form.setValue(name, defaultValue as NonNullable<TFieldValues[typeof name]>)
-    }
-  }, [defaultValue, form, name]) // Updates if defaultValue changes dynamically
-
-  return (
-    <div className='relative'>
-      <select
-        id={selectId}
-        {...form.register(name)}
-        disabled={disabled}
-        aria-invalid={!!errorMessage}
-        aria-describedby={errorId}
-        aria-live='polite'
-        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 ${
-          errorMessage ? 'border-red-500' : ''
-        } ${disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : ''} ${className}`}
-      >
-        <option value=''>{'Select an option'}</option>
-        {options.map((option) => (
-          <option
-            key={option.value}
-            value={option.value}
-            disabled={option.disabled}
-          >
-            {option.label}
-          </option>
-        ))}
-      </select>
-
-      {errorMessage && (
-        <p
-          id={errorId}
-          className='absolute text-sm text-red-500 mt-1'
-        >
-          {errorMessage}
-        </p>
-      )}
-    </div>
-  )
-}
 
 Form.Select = Select
 
-// === ERROR COMPONENT ===
+Form.Checkbox = Checkbox
 
-interface ErrorProps<TFieldValues extends FieldValues> {
-  name?: FieldPath<TFieldValues>
-  className?: string
-}
-
-const FieldErrorComponent = <TFieldValues extends FieldValues>({
-  name,
-  className = '',
-}: ErrorProps<TFieldValues>) => {
-  const { form } = useFormContext<TFieldValues>()
-  const error = name ? (form.formState.errors[name] as FieldError | undefined) : undefined
-
-  if (!error) return null
-
-  return <p className={`text-sm text-red-500 mt-1 ${className}`}>{error.message}</p>
-}
+Form.CheckboxGroup = CheckboxGroup
 
 Form.Error = FieldErrorComponent
-
-// === SUBMIT BUTTON COMPONENT ===
-
-interface SubmitProps {
-  children: ReactNode
-  className?: string
-}
-
-const Submit = ({ children, className = '' }: SubmitProps) => {
-  const { form, isSubmitting } = useFormContext<FieldValues>()
-
-  return (
-    <button
-      type='submit'
-      disabled={!form.formState.isValid || isSubmitting}
-      className={`disabled:opacity-50 disabled:cursor-not-allowed inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${className}`}
-    >
-      {isSubmitting ? (
-        <svg
-          className='animate-spin h-5 w-5 text-white'
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 24 24'
-        >
-          <circle
-            className='opacity-25'
-            cx='12'
-            cy='12'
-            r='10'
-            stroke='currentColor'
-            strokeWidth='4'
-          />
-          <path
-            className='opacity-75'
-            fill='currentColor'
-            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-          />
-        </svg>
-      ) : (
-        children
-      )}
-    </button>
-  )
-}
 
 Form.Submit = Submit

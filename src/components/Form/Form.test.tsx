@@ -340,4 +340,184 @@ describe('Form Component', () => {
     // Check that the option is disabled
     expect(disabledOption).toBeDisabled()
   })
+
+  it('renders a checkbox and allows form submission when checked', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          terms: z.boolean().refine((val) => val === true, 'You must accept the terms'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='terms'>
+          <Form.Checkbox
+            name='terms'
+            label='I accept the terms and conditions'
+          />
+          <Form.Label htmlFor='terms'>I accept the terms and conditions</Form.Label>
+          <Form.Error name='terms' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const checkbox = screen.getByLabelText(/i accept the terms and conditions/i)
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Initially, the checkbox should be unchecked and the submit button disabled
+    expect(checkbox).not.toBeChecked()
+    expect(submitButton).toBeDisabled()
+
+    // Check the checkbox
+    await user.click(checkbox)
+    expect(checkbox).toBeChecked()
+
+    // The submit button should now be enabled
+    expect(submitButton).toBeEnabled()
+
+    // Submit the form
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ terms: true })
+    })
+  })
+
+  it('renders an error message when the checkbox is not checked', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          terms: z.boolean().refine((val) => val === true, 'You must accept the terms'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='terms'>
+          <Form.Checkbox
+            name='terms'
+            label='I accept the terms and conditions'
+          />
+          <Form.Label htmlFor='terms'>I accept the terms and conditions</Form.Label>
+          <Form.Error name='terms' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Initially, the submit button should be disabled
+    expect(submitButton).toBeDisabled()
+
+    // Check and uncheck the checkbox to trigger the error message
+    await user.click(screen.getByLabelText(/i accept the terms and conditions/i))
+    await user.click(screen.getByLabelText(/i accept the terms and conditions/i))
+
+    // Check for the error message
+    expect(await screen.findByText(/you must accept the terms/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
+
+  it('renders a group of checkboxes and handles their state', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          preferences: z.array(z.string()).nonempty('At least one option must be selected'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='preferences'>
+          <Form.CheckboxGroup
+            name='preferences'
+            legend='Select your preferences'
+            options={[
+              { value: 'option1', label: 'Option 1' },
+              { value: 'option2', label: 'Option 2' },
+              { value: 'option3', label: 'Option 3', disabled: true },
+            ]}
+          />
+          <Form.Error name='preferences' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const option1 = screen.getByLabelText(/option 1/i)
+    const option2 = screen.getByLabelText(/option 2/i)
+    const option3 = screen.getByLabelText(/option 3/i)
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Initially, no checkboxes should be checked and the submit button disabled
+    expect(option1).not.toBeChecked()
+    expect(option2).not.toBeChecked()
+    expect(option3).not.toBeChecked()
+    expect(submitButton).toBeDisabled()
+
+    // Check the first two options
+    await user.click(option1)
+    await user.click(option2)
+    expect(option1).toBeChecked()
+    expect(option2).toBeChecked()
+
+    // The disabled option should remain unchecked
+    expect(option3).not.toBeChecked()
+
+    // The submit button should now be enabled
+    expect(submitButton).toBeEnabled()
+
+    // Submit the form
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ preferences: ['option1', 'option2'] })
+    })
+  })
+
+  it('displays an error message when no checkboxes are selected', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          preferences: z.array(z.string()).nonempty('At least one option must be selected'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='preferences'>
+          <Form.CheckboxGroup
+            name='preferences'
+            legend='Select your preferences'
+            options={[
+              { value: 'option1', label: 'Option 1' },
+              { value: 'option2', label: 'Option 2' },
+              { value: 'option3', label: 'Option 3', disabled: true },
+            ]}
+          />
+          <Form.Error name='preferences' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const option1 = screen.getByLabelText(/option 1/i)
+    await user.click(option1)
+    await user.click(option1)
+
+    // Check for the error message
+    expect(await screen.findByText(/at least one option must be selected/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
 })

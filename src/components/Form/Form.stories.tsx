@@ -17,6 +17,10 @@ export const BasicForm: Story = {
       schema={z.object({
         email: z.string().email('Invalid email'),
         password: z.string().min(6, 'Password too short'),
+        acceptTerms: z.literal(true, {
+          errorMap: () => ({ message: 'You must accept the terms and conditions' }),
+        }),
+        interests: z.array(z.string()).min(1, 'Select at least one interest'),
       })}
       onSubmit={async (data: { email: string; password: string }) => {
         console.log('Form submitted:', data)
@@ -44,6 +48,29 @@ export const BasicForm: Story = {
           placeholder='Enter your password'
         />
         <Form.Error name='password' />
+      </Form.Field>
+
+      <Form.Field name='interests'>
+        <Form.CheckboxGroup
+          name='interests'
+          legend='Your interests'
+          orientation='horizontal'
+          options={[
+            { value: 'tech', label: 'Technology' },
+            { value: 'sports', label: 'Sports' },
+            { value: 'music', label: 'Music' },
+            { value: 'travel', label: 'Travel' },
+          ]}
+        />
+        <Form.Error name='interests' />
+      </Form.Field>
+
+      <Form.Field name='acceptTerms'>
+        <Form.Checkbox
+          name='acceptTerms'
+          label='I accept the terms and conditions'
+        />
+        <Form.Error name='acceptTerms' />
       </Form.Field>
 
       <Form.Submit>Submit</Form.Submit>
