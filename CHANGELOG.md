@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.2.0...v0.3.0) (2025-05-06)
+
+
+### Features
+
+* add Checkbox, add CheckboxGroup, separate form parts into own components ([3588b7d](https://www.github.com/wesleywardlaw/component-library/commit/3588b7dcfa06c99549072fd87493d8f9bcad0b04))
+
 ## [0.2.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.1.0...v0.2.0) (2025-05-05)
 
 
