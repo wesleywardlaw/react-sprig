@@ -14,6 +14,8 @@ import { Select } from './Select'
 import { Input } from './Input'
 import { Label } from './Label'
 import { Field } from './Field'
+import { RadioGroup } from './RadioGroup'
+import { Radio } from './Radio'
 
 // === ROOT COMPONENT ===
 
@@ -118,3 +120,7 @@ Form.CheckboxGroup = CheckboxGroup
 Form.Error = FieldErrorComponent
 
 Form.Submit = Submit
+
+Form.RadioGroup = RadioGroup
+
+Form.Radio = Radio

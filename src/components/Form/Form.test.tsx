@@ -520,4 +520,136 @@ describe('Form Component', () => {
     expect(await screen.findByText(/at least one option must be selected/i)).toBeInTheDocument()
     expect(onSubmit).not.toHaveBeenCalled()
   })
+
+  it('renders a RadioGroup with individual Radio components and ensures proper typing and submission', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          gender: z.string().nonempty('Please select a gender'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='gender'>
+          <Form.Label>Gender</Form.Label>
+          <Form.RadioGroup name='gender'>
+            <div className='flex items-center gap-2'>
+              <Form.Radio
+                id='gender-male'
+                value='male'
+              />
+              <Form.Label htmlFor='gender-male'>Male</Form.Label>
+            </div>
+
+            <div className='flex items-center gap-2'>
+              <Form.Radio
+                id='gender-female'
+                value='female'
+              />
+              <Form.Label htmlFor='gender-female'>Female</Form.Label>
+            </div>
+          </Form.RadioGroup>
+          <Form.Error name='gender' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const maleOption = screen.getByLabelText('Male')
+    const femaleOption = screen.getByLabelText('Female')
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Initially, no radio buttons should be selected and the submit button disabled
+    expect(maleOption).not.toBeChecked()
+    expect(femaleOption).not.toBeChecked()
+    expect(submitButton).toBeDisabled()
+
+    // Select an option
+    await user.click(maleOption)
+    expect(maleOption).toBeChecked()
+
+    // The submit button should now be enabled
+    expect(submitButton).toBeEnabled()
+
+    // Submit the form
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ gender: 'male' })
+    })
+  })
+
+  it('throws an error if Radio is used outside of RadioGroup without a name', () => {
+    expect(() => {
+      render(
+        <Form
+          schema={z.object({
+            gender: z.string().nonempty('Please select a gender'),
+          })}
+          onSubmit={vi.fn()}
+        >
+          <Form.Field name='gender'>
+            <Form.Radio value='male' />
+          </Form.Field>
+        </Form>
+      )
+    }).toThrow('Radio component must have a name prop when used outside of RadioGroup')
+  })
+
+  it('displays an error when the schema cannot be satisfied after a selection', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          gender: z.literal('impossible_value', {
+            errorMap: () => ({ message: 'This value is not allowed' }),
+          }),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='gender'>
+          <Form.Label>Gender</Form.Label>
+          <Form.RadioGroup name='gender'>
+            <div className='flex items-center gap-2'>
+              <Form.Radio
+                id='gender-male'
+                value='male'
+              />
+              <Form.Label htmlFor='gender-male'>Male</Form.Label>
+            </div>
+
+            <div className='flex items-center gap-2'>
+              <Form.Radio
+                id='gender-female'
+                value='female'
+              />
+              <Form.Label htmlFor='gender-female'>Female</Form.Label>
+            </div>
+          </Form.RadioGroup>
+          <Form.Error name='gender' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const maleOption = screen.getByLabelText('Male')
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Select an option
+    await user.click(maleOption)
+    expect(maleOption).toBeChecked()
+
+    // Submit the form
+    await user.click(submitButton)
+
+    // Check for the error message
+    expect(await screen.findByText(/this value is not allowed/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
 })

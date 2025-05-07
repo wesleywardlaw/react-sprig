@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { FieldValues, UseFormReturn } from 'react-hook-form'
+import { FieldValues, UseFormReturn, FieldPath } from 'react-hook-form'
 
 type FormContextValue<TFieldValues extends FieldValues> = {
   formId: string
@@ -22,4 +22,20 @@ export const useFormContext = <
     throw error
   }
   return context as FormContextValue<TFieldValues>
+}
+
+interface RadioGroupContextType<TFieldValues extends FieldValues> {
+  name: FieldPath<TFieldValues>
+  disabled: boolean
+}
+
+export const RadioGroupContext = createContext<RadioGroupContextType<FieldValues> | null>(null)
+
+// Hook to use the RadioGroup context
+export function useRadioGroupContext<TFieldValues extends FieldValues>() {
+  const context = useContext(RadioGroupContext)
+  if (!context) {
+    throw new Error('Radio component must be used within a RadioGroup')
+  }
+  return context as RadioGroupContextType<TFieldValues>
 }

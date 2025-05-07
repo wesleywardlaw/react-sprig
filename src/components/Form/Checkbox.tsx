@@ -18,7 +18,7 @@ export const Checkbox = <TFieldValues extends FieldValues>({
   disabled = false,
 }: CheckboxProps<TFieldValues>) => {
   const { formId, form } = useFormContext<TFieldValues>()
-  const checkboxId = id || `${formId}-${name}`
+  const checkboxId = formId ? `${formId}-${name}` : id
   const error = form.formState.errors[name]
   const errorMessage = typeof error?.message === 'string' ? error.message : undefined
   const errorId = errorMessage ? `${checkboxId}-error` : undefined
