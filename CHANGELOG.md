@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.3.0...v0.4.0) (2025-05-07)
+
+
+### Features
+
+* add Radio and RadioGroup components ([4d4e478](https://www.github.com/wesleywardlaw/component-library/commit/4d4e47850e63f6c3412b661ce0a551c468c60ed6))
+
 ## [0.3.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.2.0...v0.3.0) (2025-05-06)
 
 
