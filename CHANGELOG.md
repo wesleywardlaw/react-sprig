@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.4.0...v0.5.0) (2025-05-08)
+
+
+### Features
+
+* add TextArea to Form ([960bfae](https://www.github.com/wesleywardlaw/component-library/commit/960bfaeb368c8d5ba4cfd2dc87e01feffb0b7b7e))
+
 ## [0.4.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.3.0...v0.4.0) (2025-05-07)
 
 
