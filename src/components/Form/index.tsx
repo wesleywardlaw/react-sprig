@@ -16,6 +16,7 @@ import { Label } from './Label'
 import { Field } from './Field'
 import { RadioGroup } from './RadioGroup'
 import { Radio } from './Radio'
+import { TextArea } from './TextArea'
 
 // === ROOT COMPONENT ===
 
@@ -124,3 +125,5 @@ Form.Submit = Submit
 Form.RadioGroup = RadioGroup
 
 Form.Radio = Radio
+
+Form.TextArea = TextArea

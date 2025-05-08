@@ -653,3 +653,228 @@ describe('Form Component', () => {
     expect(onSubmit).not.toHaveBeenCalled()
   })
 })
+
+describe('TextArea Component', () => {
+  const schema = z.object({
+    description: z.string().min(10, 'Description must be at least 10 characters long'),
+  })
+
+  it('renders the TextArea and allows data submission', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='description'>
+          <Form.Label htmlFor='description'>Description</Form.Label>
+          <Form.TextArea
+            name='description'
+            placeholder='Enter a description'
+            rows={4}
+            autoComplete='on'
+          />
+          <Form.Error name='description' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const textArea = screen.getByLabelText(/description/i)
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Initially, the submit button should be disabled
+    expect(submitButton).toBeDisabled()
+
+    // Enter valid data
+    await user.type(textArea, 'This is a valid description.')
+
+    // The submit button should now be enabled
+    expect(submitButton).toBeEnabled()
+
+    // Submit the form
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ description: 'This is a valid description.' })
+    })
+  })
+
+  it('displays an error message when the input is invalid', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='description'>
+          <Form.Label htmlFor='description'>Description</Form.Label>
+          <Form.TextArea
+            name='description'
+            placeholder='Enter a description'
+            rows={4}
+            autoComplete='on'
+          />
+          <Form.Error name='description' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const textArea = screen.getByLabelText(/description/i)
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Enter invalid data
+    await user.type(textArea, 'Short')
+    await user.click(submitButton)
+
+    // Check for the error message
+    expect(
+      await screen.findByText(/description must be at least 10 characters long/i)
+    ).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
+
+  it('renders a disabled TextArea', () => {
+    render(
+      <Form
+        schema={schema}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='description'>
+          <Form.Label htmlFor='description'>Description</Form.Label>
+          <Form.TextArea
+            name='description'
+            placeholder='This field is disabled'
+            disabled
+          />
+          <Form.Error name='description' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const textArea = screen.getByLabelText(/description/i)
+
+    // Check that the TextArea is disabled
+    expect(textArea).toBeDisabled()
+  })
+
+  it('respects the maxLength property', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          feedback: z.string().max(20, 'Feedback must not exceed 20 characters'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='feedback'>
+          <Form.Label htmlFor='feedback'>Feedback</Form.Label>
+          <Form.TextArea
+            name='feedback'
+            placeholder='Enter your feedback'
+            maxLength={20}
+          />
+          <Form.Error name='feedback' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const textArea = screen.getByLabelText(/feedback/i)
+
+    // Enter data exceeding maxLength
+    await user.type(textArea, 'This feedback is too long.')
+
+    // Check that the value is truncated to maxLength
+    expect(textArea).toHaveValue('This feedback is too')
+  })
+})
+
+describe('TextArea Component - Additional Tests', () => {
+  it('renders with the correct placeholder', () => {
+    render(
+      <Form
+        schema={z.object({
+          description: z.string().optional(),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='description'>
+          <Form.Label htmlFor='description'>Description</Form.Label>
+          <Form.TextArea
+            name='description'
+            placeholder='Custom placeholder'
+          />
+          <Form.Error name='description' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const textArea = screen.getByPlaceholderText(/custom placeholder/i)
+    expect(textArea).toBeInTheDocument()
+  })
+
+  it('renders with the correct defaultValue', () => {
+    render(
+      <Form
+        schema={z.object({
+          description: z.string().optional(),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='description'>
+          <Form.Label htmlFor='description'>Description</Form.Label>
+          <Form.TextArea
+            name='description'
+            defaultValue='Default text'
+          />
+          <Form.Error name='description' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const textArea = screen.getByDisplayValue(/default text/i)
+    expect(textArea).toBeInTheDocument()
+  })
+
+  it('renders with the correct number of rows', () => {
+    render(
+      <Form
+        schema={z.object({
+          description: z.string().optional(),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='description'>
+          <Form.Label htmlFor='description'>Description</Form.Label>
+          <Form.TextArea
+            name='description'
+            rows={6}
+          />
+          <Form.Error name='description' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const textArea = screen.getByLabelText(/description/i)
+    expect(textArea).toHaveAttribute('rows', '6')
+  })
+})
