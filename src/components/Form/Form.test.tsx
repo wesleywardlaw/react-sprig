@@ -878,3 +878,167 @@ describe('TextArea Component - Additional Tests', () => {
     expect(textArea).toHaveAttribute('rows', '6')
   })
 })
+
+describe('Form.Slider Component', () => {
+  it('renders the slider and allows value changes', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          volume: z.number().min(0).max(100),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='volume'>
+          <Form.Label htmlFor='volume'>Volume</Form.Label>
+          <Form.Slider
+            name='volume'
+            min={0}
+            max={100}
+            step={1}
+          />
+          <Form.Error name='volume' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const slider = screen.getByTestId('slider-input')
+    expect(slider).toBeInTheDocument()
+
+    fireEvent.change(slider, { target: { value: '50' } })
+
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ volume: 50 })
+    })
+  })
+
+  it('displays an error when the value is out of range', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          volume: z
+            .number()
+            .min(10, 'Volume must be at least 10')
+            .max(90, 'Volume must not exceed 90'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='volume'>
+          <Form.Label htmlFor='volume'>Volume</Form.Label>
+          <Form.Slider
+            name='volume'
+            min={0}
+            max={100}
+            step={1}
+          />
+          <Form.Error name='volume' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const slider = screen.getByLabelText(/volume/i)
+
+    // Set an invalid value
+    fireEvent.change(slider, { target: { value: '5' } })
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+    await user.click(submitButton)
+
+    // Check for the error message
+    expect(await screen.findByText(/volume must be at least 10/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
+
+  it('renders a disabled slider', () => {
+    render(
+      <Form
+        schema={z.object({
+          volume: z.number().optional(),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='volume'>
+          <Form.Label htmlFor='volume'>Volume</Form.Label>
+          <Form.Slider
+            name='volume'
+            min={0}
+            max={100}
+            step={1}
+            disabled
+          />
+          <Form.Error name='volume' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const slider = screen.getByLabelText(/volume/i)
+    expect(slider).toBeDisabled()
+  })
+
+  it('respects the defaultValue property', () => {
+    render(
+      <Form
+        schema={z.object({
+          volume: z.number().optional(),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='volume'>
+          <Form.Label htmlFor='volume'>Volume</Form.Label>
+          <Form.Slider
+            name='volume'
+            min={0}
+            max={100}
+            step={1}
+            defaultValue={30}
+          />
+          <Form.Error name='volume' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const slider = screen.getByLabelText(/volume/i)
+    expect(slider).toHaveValue('30')
+  })
+
+  it('renders with a prefix and suffix', () => {
+    render(
+      <Form
+        schema={z.object({
+          price: z.number().min(0).max(1000),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='price'>
+          <Form.Label htmlFor='price'>Price</Form.Label>
+          <Form.Slider
+            name='price'
+            min={0}
+            max={1000}
+            step={50}
+            valuePrefix='$'
+            valueSuffix=' USD'
+          />
+          <Form.Error name='price' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+    expect(screen.getByText(/\$0 USD/i)).toBeInTheDocument()
+  })
+})

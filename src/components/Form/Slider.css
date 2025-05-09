@@ -1,0 +1,53 @@
+/* Custom slider styles for hiding the default thumb */
+.range-input-hidden-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+/* Hide thumbs in different browsers */
+.range-input-hidden-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.range-input-hidden-thumb::-moz-range-thumb {
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+  border: none;
+}
+
+.range-input-hidden-thumb::-ms-thumb {
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* Make sure track is transparent too */
+.range-input-hidden-thumb::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.range-input-hidden-thumb::-moz-range-track {
+  background: transparent;
+}
+
+.range-input-hidden-thumb::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Improve focus styling */
+.range-input-hidden-thumb:focus {
+  outline: none;
+}
+
+.range-input-hidden-thumb:focus + .slider-focus-ring {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+  opacity: 1;
+}

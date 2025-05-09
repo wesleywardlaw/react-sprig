@@ -17,7 +17,7 @@ import { Field } from './Field'
 import { RadioGroup } from './RadioGroup'
 import { Radio } from './Radio'
 import { TextArea } from './TextArea'
-
+import { Slider } from './Slider'
 // === ROOT COMPONENT ===
 
 interface FormProps<TFieldValues extends FieldValues> {
@@ -127,3 +127,5 @@ Form.RadioGroup = RadioGroup
 Form.Radio = Radio
 
 Form.TextArea = TextArea
+
+Form.Slider = Slider
