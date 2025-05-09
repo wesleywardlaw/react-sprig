@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.5.0...v0.6.0) (2025-05-09)
+
+
+### Features
+
+* add Slider to Form ([847fea4](https://www.github.com/wesleywardlaw/component-library/commit/847fea4df931475c30829af1b2296ec14b004387))
+
 ## [0.5.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.4.0...v0.5.0) (2025-05-08)
 
 
