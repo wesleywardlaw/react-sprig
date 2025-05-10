@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { z } from 'zod'
 import { Form } from './index'
+import { Switch } from './Switch'
 
 describe('Form Component', () => {
   const schema = z.object({
@@ -1040,5 +1041,135 @@ describe('Form.Slider Component', () => {
       </Form>
     )
     expect(screen.getByText(/\$0 USD/i)).toBeInTheDocument()
+  })
+})
+
+describe('Form.Switch Component', () => {
+  it('renders the switch and toggles its state', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          notifications: z.boolean(),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='notifications'>
+          <Form.Label htmlFor='notifications'>Enable Notifications</Form.Label>
+          <Switch name='notifications' />
+          <Form.Error name='notifications' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const switchInput = screen.getByRole('switch')
+    expect(switchInput).not.toBeChecked()
+
+    // Toggle the switch
+    await user.click(switchInput)
+    expect(switchInput).toBeChecked()
+
+    // Submit the form
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+    await user.click(submitButton)
+
+    expect(onSubmit).toHaveBeenCalledWith({ notifications: true })
+  })
+
+  it('renders a disabled switch', () => {
+    render(
+      <Form
+        schema={z.object({
+          notifications: z.boolean().optional(),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='notifications'>
+          <Form.Label htmlFor='notifications'>Enable Notifications</Form.Label>
+          <Switch
+            name='notifications'
+            disabled
+          />
+          <Form.Error name='notifications' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const switchInput = screen.getByRole('checkbox')
+    expect(switchInput).toBeDisabled()
+  })
+
+  it('displays an error message when validation fails', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={z.object({
+          notifications: z.boolean().refine(() => false, {
+            message: 'This is a forced error',
+          }),
+        })}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='notifications'>
+          <Form.Label htmlFor='notifications'>Enable Notifications</Form.Label>
+          <Switch name='notifications' />
+          <Form.Error name='notifications' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const switchInput = screen.getByRole('switch')
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+
+    // Toggle the switch
+    await user.click(switchInput)
+    expect(switchInput).toBeChecked()
+
+    // Submit the form
+    await user.click(submitButton)
+
+    // Check for the error message
+    expect(await screen.findByText(/this is a forced error/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
+
+  it('applies custom colors for on and off states', () => {
+    render(
+      <Form
+        schema={z.object({
+          darkMode: z.boolean(),
+        })}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='darkMode'>
+          <Form.Label htmlFor='darkMode'>Enable Dark Mode</Form.Label>
+          <Switch
+            name='darkMode'
+            onColor='bg-green-500'
+            offColor='bg-red-500'
+          />
+          <Form.Error name='darkMode' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const switchContainer = screen.getByRole('switch')
+    expect(switchContainer).toHaveClass('bg-red-500')
+
+    // Simulate toggling the switch
+    fireEvent.click(switchContainer!)
+    expect(switchContainer).toHaveClass('bg-green-500')
   })
 })
