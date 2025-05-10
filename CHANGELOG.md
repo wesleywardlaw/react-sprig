@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.6.0...v0.7.0) (2025-05-10)
+
+
+### Features
+
+* add Switch to Form ([bd4bc20](https://www.github.com/wesleywardlaw/component-library/commit/bd4bc20bbb47bf45d812d28798be6ea00ab1efe0))
+
 ## [0.6.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.5.0...v0.6.0) (2025-05-09)
 
 
