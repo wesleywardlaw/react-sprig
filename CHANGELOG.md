@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.7.0...v0.8.0) (2025-05-12)
+
+
+### Features
+
+* add FileInput to form, make Form.Error more flexible ([f0ef536](https://www.github.com/wesleywardlaw/component-library/commit/f0ef536fa9369d6dd8158bd11f279d1fe0c77511))
+
 ## [0.7.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.6.0...v0.7.0) (2025-05-10)
 
 
