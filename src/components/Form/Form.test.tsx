@@ -1173,3 +1173,171 @@ describe('Form.Switch Component', () => {
     expect(switchContainer).toHaveClass('bg-green-500')
   })
 })
+
+describe('Form.FileInput Component', () => {
+  const schema = z.object({
+    files: z
+      .custom<File>()
+      .array()
+      .min(1, 'Please select at least one file')
+      .max(3, 'Maximum 3 files allowed')
+      .refine((files) => files.every((file) => file.size <= 1024 * 1024), {
+        message: 'Some files exceed the 1MB limit',
+        path: ['files'],
+      })
+      .superRefine((files, ctx) => {
+        files.forEach((file, index) => {
+          if (file.size > 1024 * 1024) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: `${file.name} exceeds 1MB`,
+              path: [index],
+            })
+          }
+        })
+      }),
+  })
+  it('renders the FileInput and allows file selection', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='files'>
+          <Form.Label htmlFor='files'>Upload Files</Form.Label>
+          <Form.FileInput
+            name='files'
+            accept='.png,.jpg'
+            multiple
+          />
+          <Form.Error name='files' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const file = new File(['file content'], 'example.png', { type: 'image/png' })
+    const input = screen.getByLabelText(/upload files/i) as HTMLInputElement
+
+    await user.upload(input, [file])
+
+    fireEvent.change(input, {
+      target: { files: [file] },
+    })
+
+    await user.click(screen.getByText(/submit/i))
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalled()
+      expect(onSubmit.mock.calls[0][0].files[0].name).toBe('example.png')
+    })
+  })
+
+  it('displays an error when too many files are selected', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='files'>
+          <Form.Label htmlFor='files'>Upload Files</Form.Label>
+          <Form.FileInput
+            name='files'
+            accept='.png,.jpg'
+            multiple
+          />
+          <Form.Error name='files' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const fileInput = screen.getByLabelText(/upload files/i)
+    const files = [
+      new File(['file1'], 'file1.png', { type: 'image/png' }),
+      new File(['file2'], 'file2.png', { type: 'image/png' }),
+      new File(['file3'], 'file3.png', { type: 'image/png' }),
+      new File(['file4'], 'file4.png', { type: 'image/png' }),
+    ]
+
+    await user.upload(fileInput, files)
+
+    expect(await screen.findByText(/maximum 3 files allowed/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
+
+  it('displays an error when a file exceeds the size limit', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='files'>
+          <Form.Label htmlFor='files'>Upload Files</Form.Label>
+          <Form.FileInput
+            name='files'
+            accept='.png,.jpg'
+            multiple
+          />
+          <Form.Error name='files' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const fileInput = screen.getByLabelText(/upload files/i)
+    const largeFile = new File([new Array(1024 * 1024 + 1).fill('a').join('')], 'large.png', {
+      type: 'image/png',
+    })
+
+    await user.upload(fileInput, largeFile)
+
+    expect(await screen.findByText(/Some files exceed the 1MB limit/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
+
+  it('clears selected files when the clear button is clicked', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='files'>
+          <Form.Label htmlFor='files'>Upload Files</Form.Label>
+          <Form.FileInput
+            name='files'
+            accept='.png,.jpg'
+            multiple
+          />
+          <Form.Error name='files' />
+        </Form.Field>
+
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const fileInput = screen.getByLabelText(/upload files/i) as HTMLInputElement
+    const file = new File(['file content'], 'example.png', { type: 'image/png' })
+
+    await user.upload(fileInput, file)
+
+    const clearButton = screen.getByRole('button', { name: /clear all/i })
+    await user.click(clearButton)
+
+    expect(fileInput.files).toHaveLength(0)
+  })
+})
