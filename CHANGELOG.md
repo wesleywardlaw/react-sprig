@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.8.0...v0.9.0) (2025-05-15)
+
+
+### Features
+
+* add DatePicker to Form ([9ea0ac3](https://www.github.com/wesleywardlaw/component-library/commit/9ea0ac37bd4909ebb461f79489eac3f5b527fdb1))
+
 ## [0.8.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.7.0...v0.8.0) (2025-05-12)
 
 
