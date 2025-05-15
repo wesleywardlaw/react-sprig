@@ -1303,7 +1303,7 @@ describe('Form.FileInput Component', () => {
 
     await user.upload(fileInput, largeFile)
 
-    expect(await screen.findByText(/Some files exceed the 1MB limit/i)).toBeInTheDocument()
+    expect(await screen.findByText(/some files exceed the 1mb limit/i)).toBeInTheDocument()
     expect(onSubmit).not.toHaveBeenCalled()
   })
 
@@ -1339,5 +1339,173 @@ describe('Form.FileInput Component', () => {
     await user.click(clearButton)
 
     expect(fileInput.files).toHaveLength(0)
+  })
+})
+
+describe('Form.DatePicker Component', () => {
+  // Use string for date to match input type="date" value
+  const schema = z.object({
+    date: z
+      .date({ required_error: 'Date is required', invalid_type_error: 'Invalid date' })
+      .refine((date) => date >= new Date('2020-01-01'), {
+        message: 'Date must be after Jan 1, 2020',
+      })
+      .refine((date) => date <= new Date('2030-12-31'), {
+        message: 'Date must be before Dec 31, 2030',
+      }),
+  })
+
+  it('renders the DatePicker and allows date selection', async () => {
+    const user = userEvent.setup()
+    const onSubmit = vi.fn(async (data: { date?: Date }) => {
+      console.log('[MOCK] Form submitted with:', data)
+      return { success: true }
+    })
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='date'>
+          <Form.Label htmlFor='date'>Select Date</Form.Label>
+          <Form.DatePicker name='date' />
+          <Form.Error name='date' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+    const dateInput = screen.getByLabelText(/select date/i)
+    const submitButton = screen.getByText(/submit/i)
+    await user.clear(dateInput) // Clear existing value if any
+    await user.type(dateInput, '05/15/2025')
+    await user.tab()
+    await user.click(submitButton)
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalled()
+    })
+    const toUTCMidnight = (date?: Date): Date | undefined => {
+      if (!date) return undefined
+      return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()))
+    }
+    const submittedData = onSubmit.mock.calls[0]?.[0]
+    const normalizedDate = toUTCMidnight(submittedData?.date)
+
+    expect(normalizedDate).toBeDefined()
+    expect(normalizedDate!).toEqual(new Date('2025-05-15T00:00:00Z'))
+  })
+
+  it('shows an invalid error if no date is selected', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='date'>
+          <Form.Label htmlFor='date'>Select Date</Form.Label>
+          <Form.DatePicker name='date' />
+          <Form.Error name='date' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+    const dateInput = screen.getByLabelText(/select date/i)
+    await user.type(dateInput, '5/10/2005')
+    const closeButton = screen.getByRole('button', { name: /close/i })
+    await user.click(closeButton)
+    expect(await screen.findByText(/invalid date/i)).toBeInTheDocument()
+    expect(onSubmit).not.toHaveBeenCalled()
+  })
+
+  it('shows a min date error if date is too early', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='date'>
+          <Form.Label htmlFor='date'>Select Date</Form.Label>
+          <Form.DatePicker name='date' />
+          <Form.Error name='date' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const dateInput = screen.getByLabelText(/select date/i)
+    await user.type(dateInput, '5/10/2005')
+    await user.type(dateInput, '{enter}')
+    expect(await screen.findByText(/Date must be after Jan 1, 2020/i)).toBeInTheDocument()
+  })
+
+  it('shows a max date error if date is too late', async () => {
+    const onSubmit = vi.fn()
+    const user = userEvent.setup()
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={onSubmit}
+      >
+        <Form.Field name='date'>
+          <Form.Label htmlFor='date'>Select Date</Form.Label>
+          <Form.DatePicker name='date' />
+          <Form.Error name='date' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+
+    const dateInput = screen.getByLabelText(/select date/i)
+    await user.type(dateInput, '5/10/2031')
+    await user.type(dateInput, '{enter}')
+    expect(await screen.findByText(/Date must be before Dec 31, 2030/i)).toBeInTheDocument()
+  })
+
+  it('renders a disabled DatePicker', () => {
+    render(
+      <Form
+        schema={schema}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='date'>
+          <Form.Label htmlFor='date'>Select Date</Form.Label>
+          <Form.DatePicker
+            name='date'
+            disabled
+          />
+          <Form.Error name='date' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+    const dateInput = screen.getByLabelText(/select date/i)
+    expect(dateInput).toBeDisabled()
+  })
+
+  it('renders with a defaultValue', () => {
+    render(
+      <Form
+        schema={schema}
+        onSubmit={vi.fn()}
+      >
+        <Form.Field name='date'>
+          <Form.Label htmlFor='date'>Select Date</Form.Label>
+          <Form.DatePicker
+            name='date'
+            defaultValue={new Date('2022-02-02')}
+          />
+          <Form.Error name='date' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
+      </Form>
+    )
+    const dateInput = screen.getByLabelText(/select date/i)
+    expect(dateInput).toHaveValue('02/01/2022')
   })
 })

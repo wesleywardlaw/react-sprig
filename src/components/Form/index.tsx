@@ -20,6 +20,7 @@ import { TextArea } from './TextArea'
 import { Slider } from './Slider'
 import { Switch } from './Switch'
 import { FileInput } from './FileInput'
+import { DatePicker } from './DatePicker'
 // === ROOT COMPONENT ===
 
 interface FormProps<TFieldValues extends FieldValues> {
@@ -135,3 +136,5 @@ Form.Slider = Slider
 Form.Switch = Switch
 
 Form.FileInput = FileInput
+
+Form.DatePicker = DatePicker
