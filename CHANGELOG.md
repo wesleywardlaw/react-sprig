@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.9.0...v0.10.0) (2025-05-17)
+
+
+### Features
+
+* remove demo components ([5fa4a9b](https://www.github.com/wesleywardlaw/component-library/commit/5fa4a9be84c8b634137d6c406628e432cdbc597c))
+
 ## [0.9.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.8.0...v0.9.0) (2025-05-15)
 
 
