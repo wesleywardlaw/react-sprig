@@ -32,7 +32,7 @@ export const WithImage: Story = {
   render: () => (
     <Card>
       <Card.Image
-        src='https://i.imgur.com/soOljzO.jpeg'
+        src='https://placehold.co/400X400/00000/FFF'
         alt='Card header image'
       />
       <Card.Title>Card with Image</Card.Title>
