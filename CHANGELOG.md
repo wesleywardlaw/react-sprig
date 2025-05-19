@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.10.0...v0.11.0) (2025-05-19)
+
+
+### Features
+
+* add Card component ([bc20b9e](https://www.github.com/wesleywardlaw/component-library/commit/bc20b9e875927ec83d8dd71fe3ae955b893dc656))
+
 ## [0.10.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.9.0...v0.10.0) (2025-05-17)
 
 
