@@ -24,7 +24,7 @@ interface CardImageProps {
   className?: string
 }
 
-const Card = ({
+export const Card = ({
   children,
   padding = 'p-6',
   rounded = 'rounded-lg',
@@ -70,5 +70,3 @@ Card.Image = ({ src, alt, className = '' }: CardImageProps) => (
     />
   </div>
 )
-
-export default Card
