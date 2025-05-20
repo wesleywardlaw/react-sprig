@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.12.2](https://www.github.com/wesleywardlaw/component-library/compare/v0.12.1...v0.12.2) (2025-05-20)
+
+
+### Bug Fixes
+
+* add tailwind merge to resolve class conflict in SortableContainer ([beed42c](https://www.github.com/wesleywardlaw/component-library/commit/beed42c68ed61a4a82cf672d99b1da5610ec7f34))
+
 ### [0.12.1](https://www.github.com/wesleywardlaw/component-library/compare/v0.12.0...v0.12.1) (2025-05-20)
 
 
