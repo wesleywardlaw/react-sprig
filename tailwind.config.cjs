@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}', // adjust based on project structure
+    './src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   theme: {
     extend: {
