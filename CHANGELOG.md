@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.11.0...v0.12.0) (2025-05-20)
+
+
+### Features
+
+* create SortableContainer component ([fae6035](https://www.github.com/wesleywardlaw/component-library/commit/fae6035bedf25854e11be100c9ccc270d1d477cb))
+
 ## [0.11.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.10.0...v0.11.0) (2025-05-19)
 
 
