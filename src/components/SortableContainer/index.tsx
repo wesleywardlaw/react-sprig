@@ -10,6 +10,7 @@ import {
 } from '@dnd-kit/core'
 import { SortableContext, useSortable, arrayMove } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { twMerge } from 'tailwind-merge'
 
 // Props for the generic sortable container
 interface SortableContainerProps {
@@ -39,7 +40,7 @@ const SortableItem: React.FC<{ id: string; children: ReactNode; className?: stri
       style={style}
       {...attributes}
       {...listeners}
-      className={`${defaultItemStyle} ${className || ''}`}
+      className={twMerge(defaultItemStyle, className)}
       data-testid={`sortable-item-${id}`}
     >
       {children}
