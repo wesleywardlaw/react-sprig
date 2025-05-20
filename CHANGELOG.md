@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.12.1](https://www.github.com/wesleywardlaw/component-library/compare/v0.12.0...v0.12.1) (2025-05-20)
+
+
+### Bug Fixes
+
+* add tailwind to storybook ([04dbd4c](https://www.github.com/wesleywardlaw/component-library/commit/04dbd4c70752f457c5d94cf35055ddc7c5c10fdd))
+
 ## [0.12.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.11.0...v0.12.0) (2025-05-20)
 
 
