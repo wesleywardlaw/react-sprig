@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.12.2...v0.13.0) (2025-05-21)
+
+
+### Features
+
+* add Modal component ([7011257](https://www.github.com/wesleywardlaw/component-library/commit/70112572992eaa12812f0d00eef3c54847c48ba2))
+
 ### [0.12.2](https://www.github.com/wesleywardlaw/component-library/compare/v0.12.1...v0.12.2) (2025-05-20)
 
 
