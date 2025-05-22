@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.14.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.13.0...v0.14.0) (2025-05-22)
+
+
+### Features
+
+* add Alert component ([7ca608a](https://www.github.com/wesleywardlaw/component-library/commit/7ca608a48949ce917e7fa872cf242e7bc770f5da))
+
 ## [0.13.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.12.2...v0.13.0) (2025-05-21)
 
 
