@@ -1,0 +1,135 @@
+import { Badge } from './index'
+import type { BadgeVariant, BadgeSize } from './index'
+import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react'
+
+const variants: BadgeVariant[] = [
+  'default',
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info',
+]
+
+const sizes: BadgeSize[] = ['sm', 'md', 'lg']
+
+const meta: Meta<typeof Badge> = {
+  title: 'Components/Badge',
+  component: Badge,
+  argTypes: {
+    onRemove: { action: 'removed' },
+  },
+}
+export default meta
+
+type Story = StoryObj<typeof Badge>
+
+export const Variants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+      {variants.map((variant) => (
+        <Badge
+          key={variant}
+          variant={variant}
+        >
+          {variant.charAt(0).toUpperCase() + variant.slice(1)}
+        </Badge>
+      ))}
+    </div>
+  ),
+}
+
+export const Sizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+      {sizes.map((size) => (
+        <Badge
+          key={size}
+          size={size}
+          variant='primary'
+        >
+          {size === 'sm' ? 'Small' : size === 'md' ? 'Medium' : 'Large'}
+        </Badge>
+      ))}
+    </div>
+  ),
+}
+
+export const Removable: Story = {
+  render: (args) => {
+    const [visible, setVisible] = React.useState(true)
+    return visible ? (
+      <Badge
+        {...args}
+        removable
+        onRemove={() => {
+          setVisible(false)
+          if (args.onRemove) args.onRemove()
+        }}
+        variant='success'
+      >
+        Removable
+      </Badge>
+    ) : (
+      <></>
+    )
+  },
+  args: {
+    removable: true,
+    disabled: false,
+  },
+}
+
+export const Disabled: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Badge
+        variant='primary'
+        disabled
+      >
+        Disabled
+      </Badge>
+      <Badge
+        variant='warning'
+        removable
+        disabled
+      >
+        Disabled Removable
+      </Badge>
+    </div>
+  ),
+}
+
+export const Accessibility: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Badge
+        variant='success'
+        role='status'
+        ariaLabel='Online status indicator'
+      >
+        Online
+      </Badge>
+      <Badge
+        variant='error'
+        role='status'
+        ariaLabel='3 unread notifications'
+      >
+        3
+      </Badge>
+    </div>
+  ),
+}
+
+export const CustomClassName: Story = {
+  render: () => (
+    <Badge
+      variant='info'
+      className='shadow-lg border-2 border-dashed'
+    >
+      Custom Class
+    </Badge>
+  ),
+}
