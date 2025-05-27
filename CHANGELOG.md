@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.14.0...v0.15.0) (2025-05-27)
+
+
+### Features
+
+* add Badge component ([c8b8065](https://www.github.com/wesleywardlaw/component-library/commit/c8b8065d6ed881c01042b769d3556e830454fd98))
+
 ## [0.14.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.13.0...v0.14.0) (2025-05-22)
 
 
