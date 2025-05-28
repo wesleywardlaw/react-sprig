@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.15.0...v0.16.0) (2025-05-28)
+
+
+### Features
+
+* add Skeleton component ([2443979](https://www.github.com/wesleywardlaw/component-library/commit/2443979499d430b47aeacb02ebc7c767a9dd0e4d))
+
 ## [0.15.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.14.0...v0.15.0) (2025-05-27)
 
 
