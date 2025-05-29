@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.17.1](https://www.github.com/wesleywardlaw/component-library/compare/v0.17.0...v0.17.1) (2025-05-29)
+
+
+### Bug Fixes
+
+* use focusable elements for Tooltip stories ([b4cce87](https://www.github.com/wesleywardlaw/component-library/commit/b4cce87fa06889a6f2acd448e3b6e054ed2dace8))
+
 ## [0.17.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.16.0...v0.17.0) (2025-05-29)
 
 
