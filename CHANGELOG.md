@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.16.0...v0.17.0) (2025-05-29)
+
+
+### Features
+
+* add Tooltip component ([464c564](https://www.github.com/wesleywardlaw/component-library/commit/464c56486a97a50e3c04f49caecf5693c2531fe9))
+
 ## [0.16.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.15.0...v0.16.0) (2025-05-28)
 
 
