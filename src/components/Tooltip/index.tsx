@@ -1,4 +1,5 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type TooltipPosition = 'top' | 'bottom' | 'left' | 'right'
 
@@ -90,12 +91,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
           id={tooltipId}
           role='tooltip'
           ref={tooltipRef}
-          className={`
+          className={twMerge(`
             absolute z-50 px-3 py-2 text-sm font-medium text-white
             rounded-lg shadow-lg whitespace-nowrap max-w-xs
             ${typeof color === 'string' && color.startsWith('#') ? '' : tooltipBg}
             ${className}
-          `}
+          `)}
           style={{
             ...tooltipStyles,
             animation: 'fadeIn 0.15s ease-out',
@@ -105,7 +106,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         >
           {content}
           <span
-            className={['tooltip-arrow', `tooltip-arrow-${position}`].join(' ')}
+            className={twMerge('tooltip-arrow', `tooltip-arrow-${position}`)}
             aria-hidden='true'
             style={{ borderColor: `${arrowColor} transparent transparent transparent` }}
           />
