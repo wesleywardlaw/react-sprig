@@ -22,7 +22,7 @@ export const Default: Story = {
   args: {
     content: 'This is a tooltip',
     position: 'top',
-    children: <span>Hover or focus me</span>,
+    children: <button>Hover or focus me</button>,
   },
   parameters: {
     layout: 'centered',
@@ -91,7 +91,7 @@ export const CustomDelay: Story = {
   args: {
     content: 'Appears after 1 second',
     delay: 1000,
-    children: <span>Hover or focus me</span>,
+    children: <button>Hover or focus me</button>,
   },
   render: (args) => (
     <div
@@ -112,7 +112,7 @@ export const CustomClass: Story = {
   args: {
     content: 'Custom styled tooltip',
     color: '#2563eb',
-    children: <span>Hover or focus me</span>,
+    children: <button>Hover or focus me</button>,
     className: 'text-black',
   },
   render: (args) => (
