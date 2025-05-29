@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.17.2](https://www.github.com/wesleywardlaw/component-library/compare/v0.17.1...v0.17.2) (2025-05-29)
+
+
+### Bug Fixes
+
+* use tailwind-merge to handle Tooltip classes ([5cfa5e8](https://www.github.com/wesleywardlaw/component-library/commit/5cfa5e81c6d5695424696dcaa6315b88efc32d21))
+
 ### [0.17.1](https://www.github.com/wesleywardlaw/component-library/compare/v0.17.0...v0.17.1) (2025-05-29)
 
 
