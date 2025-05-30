@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.18.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.17.2...v0.18.0) (2025-05-30)
+
+
+### Features
+
+* add Accordion component ([3773e0f](https://www.github.com/wesleywardlaw/component-library/commit/3773e0fe9653ff68cd8b909040496b2e6fe869f8))
+
 ### [0.17.2](https://www.github.com/wesleywardlaw/component-library/compare/v0.17.1...v0.17.2) (2025-05-29)
 
 
