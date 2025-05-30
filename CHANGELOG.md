@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.18.0...v0.19.0) (2025-05-30)
+
+
+### Features
+
+* change storybook logo ([7ee51ee](https://www.github.com/wesleywardlaw/component-library/commit/7ee51eeefddcefd8d1d8b0f1b643c05b65260f5c))
+
 ## [0.18.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.17.2...v0.18.0) (2025-05-30)
 
 
