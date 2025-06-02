@@ -94,7 +94,13 @@ module.exports = {
       animation: {
         ripple: 'ripple 0.6s linear',
       },
+      textDecoration: ['hover', 'focus', 'active'],
     },
   },
   plugins: [],
+  variants: {
+    extend: {
+      textDecoration: ['hover', 'focus', 'active'],
+    },
+  },
 }
