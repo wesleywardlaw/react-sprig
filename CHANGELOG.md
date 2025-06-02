@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.19.0...v0.20.0) (2025-06-02)
+
+
+### Features
+
+* add Toast component ([8cad5d4](https://www.github.com/wesleywardlaw/component-library/commit/8cad5d4728383e9b314f487f61c77fbabd120b5e))
+
 ## [0.19.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.18.0...v0.19.0) (2025-05-30)
 
 
