@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.22.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.21.0...v0.22.0) (2025-06-04)
+
+
+### Features
+
+* add Tabs component ([4a466d9](https://www.github.com/wesleywardlaw/component-library/commit/4a466d906e8e60eb55a201ef3bb39e3e6b96c687))
+
 ## [0.21.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.20.0...v0.21.0) (2025-06-03)
 
 
