@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.23.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.22.0...v0.23.0) (2025-06-05)
+
+
+### Features
+
+* add Table and Pagination components ([c16783e](https://www.github.com/wesleywardlaw/component-library/commit/c16783eb6bcd07b4940026bda62a7ac83c0ae164))
+
+
+### Bug Fixes
+
+* improve tabs styles and ensure focus only visible for keyboard ([5d3b840](https://www.github.com/wesleywardlaw/component-library/commit/5d3b840fdd1d48ef1d59f93638266ab3e84a9b29))
+
 ## [0.22.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.21.0...v0.22.0) (2025-06-04)
 
 
