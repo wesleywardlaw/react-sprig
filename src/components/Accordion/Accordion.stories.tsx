@@ -12,13 +12,22 @@ const meta: Meta<typeof Accordion> = {
     buttonClassName: { control: 'text' },
     iconClassName: { control: 'text' },
   },
+  decorators: [
+    (Story) => (
+      <div className='flex justify-center items-center min-h-screen'>
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 export default meta
+
 type Story = StoryObj<typeof Accordion>
 
 export const SingleSelection: Story = {
   args: {
+    className: 'w-96',
     defaultOpenItems: ['item-1'],
     headingLevel: 3,
     children: [
@@ -56,6 +65,7 @@ export const SingleSelection: Story = {
 
 export const MultipleSelection: Story = {
   args: {
+    className: 'w-96',
     allowMultiple: true,
     defaultOpenItems: ['item-1', 'item-3'],
     headingLevel: 4,
@@ -107,7 +117,7 @@ export const MultipleSelection: Story = {
 export const CustomStyling: Story = {
   args: {
     defaultOpenItems: ['item-1'],
-    buttonClassName: 'bg-blue-100 hover:bg-blue-200',
+    buttonClassName: 'bg-blue-100 hover:bg-blue-200 focus:bg-red-100',
     iconClassName: 'text-blue-600',
     children: [
       <AccordionItem
