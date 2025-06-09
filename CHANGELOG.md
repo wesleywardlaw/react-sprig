@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.24.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.23.0...v0.24.0) (2025-06-09)
+
+
+### Features
+
+* add a11y storybook add-on ([f793ce5](https://www.github.com/wesleywardlaw/component-library/commit/f793ce50150796151a743ab9e40edee8c59aee69))
+* ensure accordion focus style only shows when using keyboard and make stories prettier ([a01d250](https://www.github.com/wesleywardlaw/component-library/commit/a01d2503fccf2c352c94984f8e16acf9848a34f0))
+* improve apperance of Alert stories, use applicable styles form tailwind theme config ([dd55840](https://www.github.com/wesleywardlaw/component-library/commit/dd55840beae9c83ac37ea2af196e28e1242369cf))
+
 ## [0.23.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.22.0...v0.23.0) (2025-06-05)
 
 
