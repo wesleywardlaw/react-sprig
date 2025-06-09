@@ -44,6 +44,7 @@
     "@playwright/test": "^1.52.0",
     "@popperjs/core": "^2.11.8",
     "@radix-ui/react-dialog": "^1.1.14",
+    "@storybook/addon-a11y": "8.6.12",
     "@storybook/addon-essentials": "8.6.12",
     "@storybook/addon-onboarding": "8.6.12",
     "@storybook/blocks": "8.6.12",
