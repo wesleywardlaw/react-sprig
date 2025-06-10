@@ -1,6 +1,6 @@
 import { Badge } from './index'
 import type { BadgeVariant, BadgeSize } from './index'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 
 const variants: BadgeVariant[] = [

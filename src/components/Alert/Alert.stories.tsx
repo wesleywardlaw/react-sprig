@@ -1,7 +1,7 @@
 import { Alert, AlertTitle, AlertDescription } from './index'
 import type { AlertVariant } from './index'
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Alert> = {
   title: 'Components/Alert',

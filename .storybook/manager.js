@@ -1,5 +1,5 @@
-import { addons } from '@storybook/manager-api'
-import { create } from '@storybook/theming/create'
+import { addons } from 'storybook/manager-api'
+import { create } from 'storybook/theming/create'
 
 const customTheme = create({
   base: 'light',
@@ -12,5 +12,3 @@ const customTheme = create({
 addons.setConfig({
   theme: customTheme,
 })
-
-console.log('hello')

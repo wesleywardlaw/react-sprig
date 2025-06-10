@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Card } from './index'
 import { Button } from '../Button'
 
@@ -6,11 +6,11 @@ const meta: Meta<typeof Card> = {
   title: 'Components/Card',
   component: Card,
   subcomponents: {
-    'Card.Title': Card.Title,
-    'Card.Content': Card.Content,
-    'Card.Footer': Card.Footer,
-    'Card.Actions': Card.Actions,
-    'Card.Image': Card.Image,
+    'Card.Title': Card.Title as React.ComponentType<unknown>,
+    'Card.Content': Card.Content as React.ComponentType<unknown>,
+    'Card.Footer': Card.Footer as React.ComponentType<unknown>,
+    'Card.Actions': Card.Actions as React.ComponentType<unknown>,
+    'Card.Image': Card.Image as React.ComponentType<unknown>,
   },
 }
 export default meta
