@@ -1,153 +1,247 @@
-import { Button, ButtonProps } from './' // Assuming your Button component is in the same directory
-import { FaBeer, FaCoffee } from 'react-icons/fa' // Example React Icons
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Button } from './'
+import { FaBeer, FaCoffee } from 'react-icons/fa'
 
-// Default export with metadata
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    layout: 'centered',
+    controls: { expanded: true },
+  },
   argTypes: {
-    iconPosition: {
-      control: { type: 'select', options: ['before', 'after'] },
-    },
     size: {
-      control: { type: 'select', options: ['small', 'medium', 'large'] },
-    },
-    color: {
-      control: {
-        type: 'select',
-        options: ['primary', 'danger', 'success', 'secondary', 'outline'],
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+      description: 'Button size',
+      table: {
+        type: { summary: 'small | medium | large' },
+        defaultValue: { summary: 'medium' },
       },
     },
-    loading: { control: { type: 'boolean' } },
-    fullWidth: { control: { type: 'boolean' } },
-    icon: { control: { type: 'text' } },
-    children: { control: { type: 'text' } },
-    disabled: { control: { type: 'boolean' } },
+    color: {
+      control: { type: 'select' },
+      options: ['primary', 'danger', 'success', 'secondary', 'outline'],
+      description: 'Button color variant',
+      table: {
+        type: { summary: 'primary | danger | success | secondary | outline' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    iconPosition: {
+      control: { type: 'select' },
+      options: ['before', 'after'],
+      description: 'Icon position relative to text',
+      table: {
+        type: { summary: 'before | after' },
+        defaultValue: { summary: 'before' },
+      },
+    },
+    loading: {
+      control: { type: 'boolean' },
+      description: 'Show loading spinner',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    fullWidth: {
+      control: { type: 'boolean' },
+      description: 'Make button full width',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Disable the button',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    children: {
+      control: { type: 'text' },
+      description: 'Button content/text',
+    },
+    className: {
+      control: { type: 'text' },
+      description: 'Additional CSS classes',
+    },
+    ariaLabel: {
+      control: { type: 'text' },
+      description: 'Accessibility label',
+    },
+    icon: {
+      control: false,
+      description: 'Icon element to display',
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'Click handler function',
+    },
   },
+  tags: ['autodocs'],
 }
 
-// Default button (with icon before)
-export const Default = {
-  render: (args: ButtonProps) => <Button {...args} />,
+export default meta
+type Story = StoryObj<typeof meta>
+
+// Default story
+export const Default: Story = {
   args: {
     children: 'Click Me',
-    icon: <FaBeer />, // Example of React Icon
-    iconPosition: 'before',
-    color: 'primary',
-    size: 'medium',
-    loading: false,
-    fullWidth: false,
-  },
-}
-
-// Disabled button (with icon after)
-export const Disabled = {
-  render: (args: ButtonProps) => <Button {...args} />,
-  args: {
-    children: 'Disabled Button',
-    icon: <FaCoffee />,
-    iconPosition: 'after',
-    color: 'danger',
-    size: 'medium',
-    loading: false,
-    fullWidth: false,
-    disabled: true,
-  },
-}
-
-// Loading button (with spinner icon, loading state)
-export const Loading = {
-  render: (args: ButtonProps) => <Button {...args} />,
-  args: {
-    children: 'Loading...',
-    iconPosition: 'before',
-    color: 'success',
-    size: 'medium',
-    loading: true,
-    fullWidth: false,
-  },
-}
-
-// Large button (with icon before)
-export const LargeButton = {
-  render: (args: ButtonProps) => <Button {...args} />,
-  args: {
-    children: 'Large Button',
     icon: <FaBeer />,
     iconPosition: 'before',
     color: 'primary',
-    size: 'large',
-    loading: false,
-    fullWidth: false,
-  },
-}
-
-// Button with icon after text
-export const IconAfter = {
-  render: (args: ButtonProps) => <Button {...args} />,
-  args: {
-    children: 'Click Me',
-    icon: <FaCoffee />, // React Icon with "after" position
-    iconPosition: 'after',
-    color: 'primary',
     size: 'medium',
     loading: false,
     fullWidth: false,
+    disabled: false,
   },
 }
 
-// Full width button (no icon)
-export const FullWidthButton = {
-  render: (args: ButtonProps) => <Button {...args} />,
-  args: {
-    children: 'Full Width Button',
-    icon: null, // No icon
-    iconPosition: 'before',
-    color: 'primary',
-    size: 'medium',
-    loading: false,
-    fullWidth: true,
-  },
-}
-
-// Small button (with icon before)
-export const SmallButton = {
-  render: (args: ButtonProps) => <Button {...args} />,
+// Size variations
+export const Small: Story = {
   args: {
     children: 'Small Button',
     icon: <FaCoffee />,
-    iconPosition: 'before',
-    color: 'secondary',
     size: 'small',
-    loading: false,
-    fullWidth: false,
+    color: 'primary',
   },
 }
 
-// Outline button (no icon)
-export const OutlineButton = {
-  render: (args: ButtonProps) => <Button {...args} />,
+export const Medium: Story = {
   args: {
-    children: 'Outline Button',
-    icon: null,
-    iconPosition: 'before',
-    color: 'outline',
+    children: 'Medium Button',
+    icon: <FaBeer />,
     size: 'medium',
-    loading: false,
-    fullWidth: false,
+    color: 'primary',
   },
 }
 
-// Danger button (with icon before)
-export const DangerButton = {
-  render: (args: ButtonProps) => <Button {...args} />,
+export const Large: Story = {
+  args: {
+    children: 'Large Button',
+    icon: <FaCoffee />,
+    size: 'large',
+    color: 'primary',
+  },
+}
+
+// Color variations
+export const Primary: Story = {
+  args: {
+    children: 'Primary Button',
+    color: 'primary',
+  },
+}
+
+export const Danger: Story = {
   args: {
     children: 'Danger Button',
+    color: 'danger',
+    icon: <FaBeer />,
+  },
+}
+
+export const Success: Story = {
+  args: {
+    children: 'Success Button',
+    color: 'success',
+  },
+}
+
+export const Secondary: Story = {
+  args: {
+    children: 'Secondary Button',
+    color: 'secondary',
+  },
+}
+
+export const Outline: Story = {
+  args: {
+    children: 'Outline Button',
+    color: 'outline',
+  },
+}
+
+// State variations
+export const Loading: Story = {
+  args: {
+    children: 'Loading...',
+    loading: true,
+    color: 'primary',
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    children: 'Disabled Button',
+    disabled: true,
+    icon: <FaCoffee />,
+    color: 'danger',
+  },
+}
+
+// Layout variations
+export const FullWidth: Story = {
+  args: {
+    children: 'Full Width Button',
+    fullWidth: true,
+    color: 'primary',
+  },
+  parameters: {
+    layout: 'padded',
+  },
+}
+
+// Icon variations
+export const IconBefore: Story = {
+  args: {
+    children: 'Icon Before',
     icon: <FaBeer />,
     iconPosition: 'before',
-    color: 'danger',
+    color: 'primary',
+  },
+}
+
+export const IconAfter: Story = {
+  args: {
+    children: 'Icon After',
+    icon: <FaCoffee />,
+    iconPosition: 'after',
+    color: 'primary',
+  },
+}
+
+export const NoIcon: Story = {
+  args: {
+    children: 'No Icon',
+    color: 'primary',
+  },
+}
+
+// Interactive playground
+export const Playground: Story = {
+  args: {
+    children: 'Playground Button',
+    icon: <FaBeer />,
+    iconPosition: 'before',
+    color: 'primary',
     size: 'medium',
     loading: false,
     fullWidth: false,
+    disabled: false,
+  },
+  parameters: {
+    layout: 'padded',
+    docs: {
+      description: {
+        story:
+          'Interactive playground to test all button variations. Use the controls panel to customize the button.',
+      },
+    },
   },
 }

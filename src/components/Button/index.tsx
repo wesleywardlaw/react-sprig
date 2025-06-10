@@ -54,7 +54,7 @@ export const Button: React.FC<ButtonProps> = ({
   const buttonClasses = `
     relative inline-flex items-center justify-center font-semibold rounded-md transition-all
     ${sizeClasses[size] || ''} ${colorClasses[color] || ''}
-    ${disabled ? 'opacity-50 cursor-not-allowed' : 'focus:ring focus-visible:ring'}
+    ${disabled ? 'opacity-50 cursor-not-allowed' : 'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-inset'}
     ${fullWidth ? 'w-full' : ''}
     ${className}
   `
