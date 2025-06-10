@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.25.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.24.0...v0.25.0) (2025-06-10)
+
+
+### Features
+
+* add autodocs ([ef44497](https://www.github.com/wesleywardlaw/component-library/commit/ef444976a95b63e70273f73a5be4d2de6091721c))
+* improve Badge and Button stories ([9763e15](https://www.github.com/wesleywardlaw/component-library/commit/9763e155dcbf6cb35f467b7b96db8ab6502191df))
+* upgrade storybook to version 9 ([09f5494](https://www.github.com/wesleywardlaw/component-library/commit/09f54946bb0c4377ab068dfc5b402412b3b59e4a))
+
 ## [0.24.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.23.0...v0.24.0) (2025-06-09)
 
 
