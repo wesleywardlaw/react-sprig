@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.26.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.25.0...v0.26.0) (2025-06-11)
+
+
+### Features
+
+* add playwright test for modal with trigger  to check id matches aria-control ([058b220](https://www.github.com/wesleywardlaw/component-library/commit/058b22020947a1506e8a0765eb14aea007510fdb))
+* chnage range of success colors to improve accessibility with white text ([a2819b8](https://www.github.com/wesleywardlaw/component-library/commit/a2819b836569d067f8f30d2040e9ec5aab27112e))
+* improve Modal stories ([b5c3dcc](https://www.github.com/wesleywardlaw/component-library/commit/b5c3dccc0cf87f2995dbfb77df078b38cd2f97b5))
+
+
+### Bug Fixes
+
+* change text color in WithImage Card story to remove accessibility error ([928fffb](https://www.github.com/wesleywardlaw/component-library/commit/928fffb3bc11903e1d7503adf61c4602f683aed6))
+* ignore aria-valid-attr-value rule in modal stories ([659a2a1](https://www.github.com/wesleywardlaw/component-library/commit/659a2a11688ae952f56bb0cc5553305ebb1e5c1b))
+* increase reliability of sortableContainer test in webkit ([988f6e1](https://www.github.com/wesleywardlaw/component-library/commit/988f6e1a7ad79a36670f4dbd7405780047814f0b))
+
 ## [0.25.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.24.0...v0.25.0) (2025-06-10)
 
 
