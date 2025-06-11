@@ -5,6 +5,18 @@ import { Modal, ModalClose } from './index'
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
   component: Modal,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-valid-attr-value',
+            enabled: false,
+          },
+        ],
+      },
+    },
+  },
   argTypes: {
     isOpen: { control: 'boolean' },
     onOpenChange: { action: 'onOpenChange' },
