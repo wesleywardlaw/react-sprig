@@ -40,7 +40,7 @@ export const WithImage: Story = {
         <p>This card includes an image at the top.</p>
       </Card.Content>
       <Card.Footer>
-        <span className='text-xs text-gray-400'>Image courtesy of Unsplash</span>
+        <span className='text-xs'>Image courtesy of Unsplash</span>
       </Card.Footer>
     </Card>
   ),
