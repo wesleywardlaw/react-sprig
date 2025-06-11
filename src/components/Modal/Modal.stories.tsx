@@ -90,46 +90,6 @@ export const WithTriggerProp: Story = {
   },
 }
 
-export const CustomTrigger: Story = {
-  args: {
-    title: 'Custom Trigger Example',
-    description: 'This modal is opened using a custom element as trigger',
-    overlayType: 'light',
-    maxWidth: 'lg',
-    trigger: (
-      <div
-        style={{
-          background: '#bbf7d0',
-          border: '2px solid #4ade80',
-          padding: 16,
-          borderRadius: 8,
-          cursor: 'pointer',
-          textAlign: 'center',
-        }}
-      >
-        <span style={{ color: '#166534', fontWeight: 500 }}>
-          Click this entire box to open the modal
-        </span>
-      </div>
-    ),
-    footer: (
-      <ModalClose asChild>
-        <button style={{ padding: '8px 16px', background: '#22c55e', color: 'white' }}>
-          I understand
-        </button>
-      </ModalClose>
-    ),
-    children: (
-      <div>
-        <p>
-          The trigger prop accepts any React element, letting you use custom components to open the
-          modal.
-        </p>
-      </div>
-    ),
-  },
-}
-
 export const OverlayTypes: Story = {
   render: (args) => (
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', padding: 40 }}>
@@ -159,7 +119,7 @@ export const OverlayTypes: Story = {
         description='This modal uses a light overlay'
         overlayType='light'
         trigger={
-          <button style={{ padding: '8px 16px', background: '#f59e42', color: 'white' }}>
+          <button style={{ padding: '8px 16px', background: '#8B0000', color: 'white' }}>
             Light Overlay
           </button>
         }
