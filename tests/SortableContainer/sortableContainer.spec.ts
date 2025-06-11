@@ -19,13 +19,15 @@ async function dragAndDrop(
   // Calculate center points for drag/drop
   const startX = sourceBox!.x + sourceBox!.width / 2
   const startY = sourceBox!.y + sourceBox!.height / 2
+  // Move slightly past the center of the target for WebKit reliability
   const endX = targetBox!.x + targetBox!.width / 2
-  const endY = targetBox!.y + targetBox!.height / 2
+  const endY = targetBox!.y + targetBox!.height / 2 + 10
 
-  // Perform the drag and drop using granular mouse actions
   await page.mouse.move(startX, startY)
   await page.mouse.down()
-  await page.mouse.move(endX, endY, { steps: options?.steps || 20 }) // Default steps to 20
+  await page.waitForTimeout(100) // Add a small delay after mouse down
+  await page.mouse.move(endX, endY, { steps: options?.steps || 50 })
+  await page.waitForTimeout(100) // Add a small delay before mouse up
   await page.mouse.up()
 }
 
@@ -59,10 +61,13 @@ test.describe('SortableContainer - Granular Mouse Actions', () => {
     const itemC = page.getByTestId('sortable-item-item-2')
     const itemA = page.getByTestId('sortable-item-item-0')
 
-    await dragAndDrop(page, itemC, itemA)
+    // Use more steps for smoother drag in WebKit
+    await dragAndDrop(page, itemC, itemA, { steps: 50 })
+
+    // Wait for the DOM to update: first item should become 'Item C'
+    await expect(page.locator('[data-testid^="sortable-item-"]').first()).toHaveText('Item C')
 
     const finalOrder = await page.locator('[data-testid^="sortable-item-"]').allTextContents()
-
     expect(finalOrder).toEqual(['Item C', 'Item A', 'Item B'])
   })
 
