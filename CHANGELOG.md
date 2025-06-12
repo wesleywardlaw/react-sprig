@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.28.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.27.0...v0.28.0) (2025-06-12)
+
+
+### Features
+
+* rename Skeleton test file, improve apperance of SortableContainer stories ([40e2057](https://www.github.com/wesleywardlaw/component-library/commit/40e205783647acce9331ce6d62c42247ddbec7a0))
+
 ## [0.27.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.26.0...v0.27.0) (2025-06-12)
 
 
