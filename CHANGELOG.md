@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.27.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.26.0...v0.27.0) (2025-06-12)
+
+
+### Features
+
+* update focus styles for Navigation and Pagination components ([c4ba633](https://www.github.com/wesleywardlaw/component-library/commit/c4ba633774a29fbda27c05a7277f5cddb05af22d))
+
 ## [0.26.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.25.0...v0.26.0) (2025-06-11)
 
 
