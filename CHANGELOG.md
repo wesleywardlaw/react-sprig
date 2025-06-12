@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.29.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.28.0...v0.29.0) (2025-06-12)
+
+
+### Features
+
+* improve accessibilty of Table and Tabs, improve Toast stories ([0734be2](https://www.github.com/wesleywardlaw/component-library/commit/0734be2b6b19a5aeb3569d57c14d34e830bc1902))
+
 ## [0.28.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.27.0...v0.28.0) (2025-06-12)
 
 
