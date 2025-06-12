@@ -8,6 +8,25 @@ const meta: Meta<typeof SortableContainer> = {
     className: { control: 'text' },
     itemClassName: { control: 'text' },
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '80vh',
+          width: '100vw',
+          maxWidth: '100vw',
+          padding: '2rem',
+        }}
+      >
+        <div style={{ minWidth: 400, width: 'fit-content', maxWidth: '80vw' }}>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export default meta
