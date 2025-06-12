@@ -21,7 +21,7 @@ const demoTabs = [
   {
     id: 'help',
     label: 'Help',
-    content: <div className='p-4'>Help content goes here (should be disabled).</div>,
+    content: <div className='p-4'>Help content goes here.</div>,
   },
 ]
 

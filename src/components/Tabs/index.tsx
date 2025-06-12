@@ -90,7 +90,7 @@ export function Tabs({
       default:
         'border  hover:border-gray-300 data-[active=true]:text-black data-[active=true]:border-black rounded-t-lg',
       pills:
-        'rounded-full hover:bg-gray-100 data-[active=true]:bg-blue-500 data-[active=true]:text-white',
+        'rounded-full hover:bg-gray-100 data-[active=true]:bg-blue-600 data-[active=true]:text-white',
       underline:
         'border-b-2 border-transparent hover:border-gray-300 data-[active=true]:border-blue-500 data-[active=true]:text-blue-600 rounded-t-lg',
     }
@@ -124,6 +124,7 @@ export function Tabs({
         {tabs.map((tab, index) => (
           <button
             key={tab.id}
+            id={`tab-${tab.id}`}
             ref={(el) => {
               tabRefs.current[index] = el
             }}

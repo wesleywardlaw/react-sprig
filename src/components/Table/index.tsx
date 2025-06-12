@@ -46,7 +46,7 @@ export function Table<T>({
 
         return (
           <button
-            className='flex items-center gap-2 font-semibold text-gray-900 hover:text-blue-600 focus:outline-none focus:text-blue-600'
+            className='flex items-center gap-2 font-semibold text-gray-900 hover:text-blue-600 focus:outline-none focus-visible:text-blue-600'
             onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
             aria-label={`Sort by ${col.header} ${
               column.getIsSorted() === 'asc'
