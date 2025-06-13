@@ -7,78 +7,27 @@ import { FileInput } from './FileInput'
 const meta: Meta<typeof Form> = {
   title: 'Components/Form',
   component: Form,
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '100vh',
+        }}
+      >
+        <div style={{ minWidth: 200, width: '100%', maxWidth: 400 }}>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export default meta
 
 type Story = StoryObj<typeof Form>
-
-export const BasicForm: Story = {
-  render: () => (
-    <Form
-      schema={z.object({
-        email: z.string().email('Invalid email'),
-        password: z.string().min(6, 'Password too short'),
-        acceptTerms: z.literal(true, {
-          errorMap: () => ({ message: 'You must accept the terms and conditions' }),
-        }),
-        interests: z.array(z.string()).min(1, 'Select at least one interest'),
-      })}
-      onSubmit={async (data: { email: string; password: string }) => {
-        console.log('Form submitted:', data)
-        return { success: true }
-      }}
-    >
-      <Form.Field name='email'>
-        <Form.Label htmlFor='email'>Email</Form.Label>
-        <Form.Input
-          name='email'
-          type='email'
-          placeholder='Enter your email'
-        />
-        <Form.Error name='email' />
-      </Form.Field>
-
-      <Form.Field
-        name='password'
-        className='mb-4'
-      >
-        <Form.Label htmlFor='password'>Password</Form.Label>
-        <Form.Input
-          name='password'
-          type='password'
-          placeholder='Enter your password'
-        />
-        <Form.Error name='password' />
-      </Form.Field>
-
-      <Form.Field name='interests'>
-        <Form.CheckboxGroup
-          name='interests'
-          legend='Your interests'
-          orientation='horizontal'
-          options={[
-            { value: 'tech', label: 'Technology' },
-            { value: 'sports', label: 'Sports' },
-            { value: 'music', label: 'Music' },
-            { value: 'travel', label: 'Travel' },
-          ]}
-        />
-        <Form.Error name='interests' />
-      </Form.Field>
-
-      <Form.Field name='acceptTerms'>
-        <Form.Checkbox
-          name='acceptTerms'
-          label='I accept the terms and conditions'
-        />
-        <Form.Error name='acceptTerms' />
-      </Form.Field>
-
-      <Form.Submit>Submit</Form.Submit>
-    </Form>
-  ),
-}
 
 export const FieldErrorSubmission: Story = {
   render: () => (
