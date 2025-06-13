@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.30.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.29.0...v0.30.0) (2025-06-13)
+
+
+### Features
+
+* add margin below Field, separate Input story into own file ([986b1a4](https://www.github.com/wesleywardlaw/component-library/commit/986b1a4bfe61a1d7a6c086788a55acb381e880cc))
+
 ## [0.29.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.28.0...v0.29.0) (2025-06-12)
 
 
