@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.31.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.30.0...v0.31.0) (2025-06-16)
+
+
+### Features
+
+* separate Form stories per component, unregister disabled slider ([625b781](https://www.github.com/wesleywardlaw/component-library/commit/625b781179e862fa9c27a9444e282a93fb61f030))
+
 ## [0.30.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.29.0...v0.30.0) (2025-06-13)
 
 
