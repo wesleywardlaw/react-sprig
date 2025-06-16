@@ -34,7 +34,7 @@ export const Slider = <TFieldValues extends FieldValues>({
   id,
 }: SliderProps<TFieldValues>) => {
   const { formId, form } = useFormContext<TFieldValues>()
-  const { register, setValue } = form
+  const { register, setValue, unregister } = form
 
   const fieldId = formId ? `${formId}-${name}` : (id ?? name)
 
@@ -121,13 +121,26 @@ export const Slider = <TFieldValues extends FieldValues>({
     e.preventDefault() // Stop the event from propagating further
   }
 
+  useEffect(() => {
+    if (disabled) {
+      console.log(`Disabling slider: ${name}`)
+      unregister(name) // Completely removes the slider field
+    } else {
+      console.log(`Enabling slider: ${name}`)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setValue(name, initialValue as any, { shouldValidate: false }) // Restore default when enabled
+    }
+  }, [disabled, initialValue, name, setValue, unregister])
+
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`w-full ${className} ${disabled ? 'cursor-not-allowed' : ''}`}>
       <div className='relative pt-1 pb-5'>
         {/* Custom track (behind the input) */}
         <div
-          className='absolute top-1/2 left-0 w-full h-2 rounded-full bg-gray-200'
-          style={{ transform: 'translateY(-50%)', pointerEvents: 'none' }}
+          className={`absolute top-1/2 left-0 w-full h-2 rounded-full bg-gray-200${
+            disabled ? ' cursor-not-allowed' : ''
+          }`}
+          style={{ transform: 'translateY(-50%)', pointerEvents: disabled ? 'auto' : 'none' }}
         />
 
         {/* Filled part of the track */}
@@ -153,13 +166,19 @@ export const Slider = <TFieldValues extends FieldValues>({
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           ref={ref}
-          className={`relative z-10 w-full h-2 appearance-none bg-transparent range-input-hidden-thumb cursor-pointer ${
-            disabled ? 'opacity-50 cursor-not-allowed' : ''
+          className={`absolute top-1/2 h-6 appearance-none bg-transparent range-input-hidden-thumb z-10 ${
+            disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
           }`}
           style={{
             WebkitAppearance: 'none',
             appearance: 'none',
             background: 'transparent',
+            transform: 'translateY(-50%)',
+            zIndex: 10,
+            pointerEvents: 'auto',
+            width: 'calc(100% + 16px)',
+            left: '-8px',
+            cursor: disabled ? 'not-allowed' : 'pointer',
           }}
           aria-valuenow={sliderValue}
           aria-valuemin={min}
@@ -175,12 +194,12 @@ export const Slider = <TFieldValues extends FieldValues>({
         {/* Custom thumb (on top of everything) */}
         <div
           className={`absolute top-1/2 w-4 h-4 rounded-full shadow ${
-            disabled ? 'bg-gray-400' : 'bg-blue-600'
+            disabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600'
           }`}
           style={{
             left: `calc(${percentage}% - 0.5rem)`,
             transform: 'translateY(-50%)',
-            pointerEvents: 'none',
+            pointerEvents: disabled ? 'auto' : 'none',
           }}
         />
       </div>
