@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.33.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.32.0...v0.33.0) (2025-06-17)
+
+
+### Features
+
+* switch DatePicker to react-day-picker ([aebb4e7](https://www.github.com/wesleywardlaw/component-library/commit/aebb4e7366394c7bb483595b03e51f112bbf149c))
+
 ## [0.32.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.31.0...v0.32.0) (2025-06-17)
 
 
