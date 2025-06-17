@@ -1351,6 +1351,7 @@ describe('Form.FileInput Component', () => {
 describe('Form.DatePicker Component', () => {
   // Use string for date to match input type="date" value
   const schema = z.object({
+    something: z.string().optional(),
     date: z
       .date({ required_error: 'Date is required', invalid_type_error: 'Invalid date' })
       .refine((date) => date >= new Date('2020-01-01'), {
@@ -1409,6 +1410,12 @@ describe('Form.DatePicker Component', () => {
         schema={schema}
         onSubmit={onSubmit}
       >
+        <Form.Field name='something'>
+          <Form.Label htmlFor='something'>something</Form.Label>
+          <Form.DatePicker name='something' />
+          <Form.Error name='something' />
+        </Form.Field>
+        <Form.Submit>Submit</Form.Submit>
         <Form.Field name='date'>
           <Form.Label htmlFor='date'>Select Date</Form.Label>
           <Form.DatePicker name='date' />
@@ -1418,9 +1425,9 @@ describe('Form.DatePicker Component', () => {
       </Form>
     )
     const dateInput = screen.getByLabelText(/select date/i)
-    await user.type(dateInput, '5/10/2005')
-    const closeButton = screen.getByRole('button', { name: /close/i })
-    await user.click(closeButton)
+    await user.type(dateInput, '05/15/2025')
+    await user.clear(dateInput)
+    await user.tab({ shift: true })
     expect(await screen.findByText(/invalid date/i)).toBeInTheDocument()
     expect(onSubmit).not.toHaveBeenCalled()
   })
