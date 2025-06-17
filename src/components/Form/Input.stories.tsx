@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react-vite'
 import { z } from 'zod'
 import { Form } from '.'
+import { useState } from 'react'
 
 const meta: Meta<typeof Form> = {
   title: 'Components/Form/Input',
@@ -31,8 +32,8 @@ export const Input: Story = {
   render: () => (
     <Form
       schema={z.object({
-        email: z.string().optional(),
-        password: z.string().optional(),
+        email: z.string().email('Invalid email format'),
+        password: z.string().min(6, 'Password must be at least 6 characters long'),
       })}
       onSubmit={async (data: { email?: string; password?: string }) => {
         console.log('Form submitted:', data)
@@ -47,6 +48,7 @@ export const Input: Story = {
           type='email'
           placeholder='Enter your email'
         />
+        <Form.Error name='email' />
       </Form.Field>
 
       <Form.Field
@@ -152,4 +154,52 @@ export const RootErrorSubmission: Story = {
       <Form.Submit>Submit</Form.Submit>
     </Form>
   ),
+}
+
+export const Disabled: Story = {
+  render: () => {
+    const [disabled, setDisabled] = useState(false)
+    const schema = z.object({
+      disabledField: z.preprocess(
+        (val: unknown) => (typeof val === 'string' ? (val === '' ? undefined : val) : undefined),
+        z.string().min(3, 'must be at least 3 characters').optional()
+      ),
+      alwaysEnabled: z.string().optional(),
+    }) as unknown as z.ZodType<{ disabledField?: string; alwaysEnabled?: string }>
+    return (
+      <Form
+        schema={schema}
+        onSubmit={async (data: { disabledField?: string; alwaysEnabled?: string }) => {
+          console.log('Form submitted:', data)
+          return { success: true }
+        }}
+        className='flex flex-col gap-4'
+      >
+        <button
+          type='button'
+          onClick={() => setDisabled((d) => !d)}
+          className='mb-2 border rounded px-2 py-1 bg-gray-100 hover:bg-gray-200 self-start'
+        >
+          {disabled ? 'Enable' : 'Disable'} Disabled Field
+        </button>
+        <Form.Field name='disabledField'>
+          <Form.Label htmlFor='disabledField'>Toggle Disabled Field</Form.Label>
+          <Form.Input
+            name='disabledField'
+            placeholder='Can be disabled'
+            disabled={disabled}
+          />
+          <Form.Error name='disabledField' />
+        </Form.Field>
+        <Form.Field name='alwaysEnabled'>
+          <Form.Label htmlFor='alwaysEnabled'>Always Enabled Field</Form.Label>
+          <Form.Input
+            name='alwaysEnabled'
+            placeholder='Always enabled'
+          />
+        </Form.Field>
+        <Form.Submit className='self-end'>Submit</Form.Submit>
+      </Form>
+    )
+  },
 }

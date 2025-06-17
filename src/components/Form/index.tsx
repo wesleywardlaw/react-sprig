@@ -32,6 +32,7 @@ interface FormProps<TFieldValues extends FieldValues> {
   }>
   className?: string
   id?: string
+  validationMode?: 'onChange' | 'onBlur' | 'onSubmit' | 'onTouched' | 'all'
 }
 
 export const Form = <TFieldValues extends FieldValues>({
@@ -40,6 +41,7 @@ export const Form = <TFieldValues extends FieldValues>({
   onSubmit,
   className = '',
   id: externalId,
+  validationMode = 'onTouched',
 }: FormProps<TFieldValues>) => {
   const internalId = useId()
   const formId = externalId || internalId
@@ -48,7 +50,7 @@ export const Form = <TFieldValues extends FieldValues>({
 
   const form = useForm<TFieldValues>({
     resolver: zodResolver(schema),
-    mode: 'onChange',
+    mode: validationMode,
   })
 
   const handleFormSubmit: SubmitHandler<TFieldValues> = async (data) => {

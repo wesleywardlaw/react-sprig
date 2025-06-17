@@ -53,6 +53,7 @@ describe('Form Component', () => {
       <Form
         schema={schema}
         onSubmit={onSubmit}
+        validationMode='onChange'
       >
         <Form.Field name='email'>
           <Form.Label htmlFor='email'>Email</Form.Label>
@@ -421,6 +422,9 @@ describe('Form Component', () => {
     await user.click(screen.getByLabelText(/i accept the terms and conditions/i))
     await user.click(screen.getByLabelText(/i accept the terms and conditions/i))
 
+    // Now click submit just to make the checkbox touched
+    await user.click(submitButton)
+
     // Check for the error message
     expect(await screen.findByText(/you must accept the terms/i)).toBeInTheDocument()
     expect(onSubmit).not.toHaveBeenCalled()
@@ -516,7 +520,9 @@ describe('Form Component', () => {
     const option1 = screen.getByLabelText(/option 1/i)
     await user.click(option1)
     await user.click(option1)
-
+    // Now click submit just to make the checkbox touched
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+    await user.click(submitButton)
     // Check for the error message
     expect(await screen.findByText(/at least one option must be selected/i)).toBeInTheDocument()
     expect(onSubmit).not.toHaveBeenCalled()
