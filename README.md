@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img src="public/logo.png" alt="React-Sprig Logo" width="300" height="300" style="background:white; border-radius:16px; padding:8px;" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# React-Sprig
 
-Currently, two official plugins are available:
+React-Sprig is a UI component library developed in React and Tailwind that provides all of the basic components needed to kickstart a project. A Storybook demonstrating the components is available at [https://react-sprig.netlify.app/](https://react-sprig.netlify.app/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+To install dependencies:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To run the project in development mode:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+pnpm run storybook
+```
+
+## Testing
+
+This project uses [Vitest](https://vitest.dev/) for unit and component tests. To run the tests, use:
+
+```
+pnpm test
+```
+
+or
+
+```
+pnpm run test
+```
+
+For interactive test UI:
+
+```
+pnpm run test:ui
+```
+
+## Playwright Tests
+
+Additional tests are written with [Playwright](https://playwright.dev/). To run Playwright tests, use:
+
+```
+pnpm run test:playwright
+```
+
+## Publishing with Verdaccio
+
+To test publishing locally, you can use [Verdaccio](https://verdaccio.org/docs/installation/). There is a script to publish to a local Verdaccio registry:
+
+```
+pnpm run verdaccio
+```
+
+See the [Verdaccio documentation](https://verdaccio.org/docs/installation/) for setup and usage instructions.
