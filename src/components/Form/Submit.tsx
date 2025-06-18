@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { useFormContext } from './Context'
 import { FieldValues } from 'react-hook-form'
 
-interface SubmitProps {
+export interface SubmitProps {
   children: ReactNode
   className?: string
 }

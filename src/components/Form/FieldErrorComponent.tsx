@@ -1,7 +1,7 @@
 import { FieldPath, FieldValues } from 'react-hook-form'
 import { useFormContext } from './Context'
 
-interface ErrorProps<TFieldValues extends FieldValues> {
+export interface ErrorProps<TFieldValues extends FieldValues> {
   name?: FieldPath<TFieldValues> | string
   className?: string
 }

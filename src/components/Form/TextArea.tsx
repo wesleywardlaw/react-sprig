@@ -4,7 +4,7 @@ import React from 'react'
 
 import { useFormContext } from './Context'
 
-interface TextAreaProps {
+export interface TextAreaProps {
   name: string
   placeholder?: string
   defaultValue?: string

@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { useFormContext } from './Context'
 
-interface LabelProps {
+export interface LabelProps {
   children: ReactNode
   htmlFor?: string
   className?: string

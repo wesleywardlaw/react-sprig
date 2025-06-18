@@ -6,7 +6,7 @@ import { FieldValues, FieldPath } from 'react-hook-form'
 
 import './Slider.css'
 
-interface SliderProps<TFieldValues extends FieldValues> {
+export interface SliderProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   min?: number
   max?: number

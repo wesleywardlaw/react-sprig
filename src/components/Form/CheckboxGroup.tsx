@@ -9,7 +9,7 @@ interface CheckboxOption {
   disabled?: boolean
 }
 
-interface CheckboxGroupProps<TFieldValues extends FieldValues> {
+export interface CheckboxGroupProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   options: CheckboxOption[]
   className?: string

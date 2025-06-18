@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-interface FieldProps {
+export interface FieldProps {
   children: ReactNode
   name: string
   className?: string

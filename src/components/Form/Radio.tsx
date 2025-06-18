@@ -2,7 +2,7 @@ import { FieldPath, FieldValues } from 'react-hook-form'
 import { useFormContext, useRadioGroupContext } from './Context'
 
 // === RADIO COMPONENT ===
-interface RadioProps<TFieldValues extends FieldValues> {
+export interface RadioProps<TFieldValues extends FieldValues> {
   value: string
   name?: FieldPath<TFieldValues> // Optional now, as it can come from context
   disabled?: boolean

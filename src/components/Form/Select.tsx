@@ -10,7 +10,7 @@ interface SelectOption {
   disabled?: boolean
 }
 
-interface SelectProps<TFieldValues extends FieldValues> {
+export interface SelectProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   options: SelectOption[]
   className?: string

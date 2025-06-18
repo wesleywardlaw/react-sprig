@@ -12,7 +12,7 @@ import {
 } from 'react-hook-form'
 import { useFormContext } from './Context'
 
-interface FileInputProps<TFieldValues extends FieldValues> {
+export interface FileInputProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   accept?: string
   multiple?: boolean

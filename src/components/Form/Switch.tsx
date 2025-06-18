@@ -2,7 +2,7 @@ import { FieldPath, FieldValues } from 'react-hook-form'
 
 import { useFormContext } from './Context'
 
-interface SwitchProps<TFieldValues extends FieldValues> {
+export interface SwitchProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   disabled?: boolean
   className?: string

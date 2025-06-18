@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { useFormContext } from './Context'
 
-interface InputProps<TFieldValues extends FieldValues> {
+export interface InputProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   type?: string
   placeholder?: string

@@ -5,7 +5,7 @@ import { FieldPath, FieldValues } from 'react-hook-form'
 
 import { RadioGroupContext, useFormContext } from './Context'
 
-interface RadioGroupProps<TFieldValues extends FieldValues> {
+export interface RadioGroupProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   children: React.ReactNode
   className?: string

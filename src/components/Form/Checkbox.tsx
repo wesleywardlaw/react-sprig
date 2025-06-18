@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { FieldValues, FieldPath } from 'react-hook-form'
 import { useFormContext } from './Context'
 
-interface CheckboxProps<TFieldValues extends FieldValues> {
+export interface CheckboxProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>
   label: ReactNode
   className?: string

@@ -7,7 +7,7 @@ import 'react-day-picker/dist/style.css'
 
 import { useFormContext } from './Context' // Using your custom FormContext hook
 
-interface DatePickerProps {
+export interface DatePickerProps {
   name: string
   required?: boolean
   defaultValue?: Date
