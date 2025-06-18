@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.34.1](https://www.github.com/wesleywardlaw/component-library/compare/v0.34.0...v0.34.1) (2025-06-18)
+
+
+### Bug Fixes
+
+* export additional types for Form related components ([190ea4a](https://www.github.com/wesleywardlaw/component-library/commit/190ea4a4d5099b5596770322f4d8b46a4f3ce75b))
+
 ## [0.34.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.33.0...v0.34.0) (2025-06-18)
 
 
