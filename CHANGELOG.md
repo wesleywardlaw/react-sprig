@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://www.github.com/wesleywardlaw/component-library/compare/v1.0.0...v2.0.0) (2025-06-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename package
+
+### Features
+
+* rename package ([80371bf](https://www.github.com/wesleywardlaw/component-library/commit/80371bf189bed708dd9520ea3c7a1ba3af36da57))
+
 ## [1.0.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.35.0...v1.0.0) (2025-06-19)
 
 
