@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/wesleywardlaw/component-library/refs/heads/main/public/logo.png" alt="React-Sprig Logo" width="300" height="300" style="background:white; border-radius:16px; padding:8px;" />
 </p>
 
-![npm](https://img.shields.io/npm/v/@wesleywardlaw/react-sprig)
+[![npm version](https://img.shields.io/npm/v/@wesleywardlaw/react-sprig.svg)](https://www.npmjs.com/package/@wesleywardlaw/react-sprig)
 
 # react-sprig
 
