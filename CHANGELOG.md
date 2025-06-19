@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.35.0](https://www.github.com/wesleywardlaw/component-library/compare/v0.34.1...v0.35.0) (2025-06-19)
+
+
+### Features
+
+* add Checkbox and CheckboxGroup stories ([88f4068](https://www.github.com/wesleywardlaw/component-library/commit/88f40687cb450eab787c497d32468d84726b46c9))
+
+
+### Bug Fixes
+
+* update focus styles for Checkbox and CheckboxGroup ([9c71d3b](https://www.github.com/wesleywardlaw/component-library/commit/9c71d3bbe0dd21b8cbb04f2f525ba65a24a4b6dc))
+
 ### [0.34.1](https://www.github.com/wesleywardlaw/component-library/compare/v0.34.0...v0.34.1) (2025-06-18)
 
 
