@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/logo.png" alt="React-Sprig Logo" width="300" height="300" style="background:white; border-radius:16px; padding:8px;" />
+  <img src="https://raw.githubusercontent.com/wesleywardlaw/component-library/refs/heads/main/public/logo.png" alt="React-Sprig Logo" width="300" height="300" style="background:white; border-radius:16px; padding:8px;" />
 </p>
 
-[![npm version](https://badge.fury.io/js/@wesleywardlaw%2Freact-sprig.svg)](https://badge.fury.io/js/@wesleywardlaw%2Freact-sprig)
+![npm](https://img.shields.io/npm/v/@wesleywardlaw/react-sprig)
 
 # react-sprig
 
