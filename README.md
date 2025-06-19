@@ -2,6 +2,8 @@
   <img src="public/logo.png" alt="React-Sprig Logo" width="300" height="300" style="background:white; border-radius:16px; padding:8px;" />
 </p>
 
+[![npm version](https://badge.fury.io/js/@wesleywardlaw%2Freact-sprig.svg)](https://badge.fury.io/js/@wesleywardlaw%2Freact-sprig)
+
 # react-sprig
 
 react-sprig is a UI component library developed in React and Tailwind that provides all of the basic components needed to kickstart a project. A Storybook demonstrating the components is available at [https://react-sprig.netlify.app/](https://react-sprig.netlify.app/).
