@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://www.github.com/wesleywardlaw/component-library/compare/v2.0.0...v2.1.0) (2025-06-19)
+
+
+### Features
+
+* add npm badge to README ([d64aab1](https://www.github.com/wesleywardlaw/component-library/commit/d64aab14f21ec57f5a854a1dd9404d8145830737))
+
 ## [2.0.0](https://www.github.com/wesleywardlaw/component-library/compare/v1.0.0...v2.0.0) (2025-06-19)
 
 
