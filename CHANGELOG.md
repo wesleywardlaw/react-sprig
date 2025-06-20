@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://www.github.com/wesleywardlaw/react-sprig/compare/v2.3.0...v2.4.0) (2025-06-20)
+
+
+### Features
+
+* update README command ([7cab16d](https://www.github.com/wesleywardlaw/react-sprig/commit/7cab16d681faa95cb13ab596adb4ea4b57cd346c))
+
 ## [2.3.0](https://www.github.com/wesleywardlaw/component-library/compare/v2.2.0...v2.3.0) (2025-06-19)
 
 
