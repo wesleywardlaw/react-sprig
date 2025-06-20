@@ -61,7 +61,7 @@ pnpm run verdaccio
 This allows for the import and use of react-sprig components in other apps. When running verdaccio, you can then run this command to install react-sprig from your local registry:
 
 ```
-pnpm install react-sprig --registry http://localhost:4873
+pnpm install @wesleywardlaw/react-sprig --registry http://localhost:4873
 ```
 
 See the [Verdaccio documentation](https://verdaccio.org/docs/installation/) for setup and usage instructions.
