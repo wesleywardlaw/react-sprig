@@ -27,12 +27,6 @@ pnpm run storybook
 This project uses [Vitest](https://vitest.dev/) for unit and component tests. To run the tests, use:
 
 ```
-pnpm test
-```
-
-or
-
-```
 pnpm run test
 ```
 
