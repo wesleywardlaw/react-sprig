@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.1](https://www.github.com/wesleywardlaw/react-sprig/compare/v2.4.0...v2.4.1) (2025-06-25)
+
+
+### Bug Fixes
+
+* remove redundant command in README ([19e8c04](https://www.github.com/wesleywardlaw/react-sprig/commit/19e8c0463f575e1b364a9ab2779fe704c8d17e01))
+
 ## [2.4.0](https://www.github.com/wesleywardlaw/react-sprig/compare/v2.3.0...v2.4.0) (2025-06-20)
 
 
