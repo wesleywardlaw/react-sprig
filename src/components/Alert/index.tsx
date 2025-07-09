@@ -50,12 +50,12 @@ export const Alert: React.FC<AlertProps> = ({
       role='alert'
       {...props}
     >
-      {showIcon && <Icon className='w-5 h-5 mt-0.5 flex-shrink-0' />}
+      {showIcon && <Icon className='w-5 h-5 mt-0.5 shrink-0' />}
       <div className='flex-1 min-w-0 pt-0.5'>{children}</div>
       {onClose && (
         <button
           onClick={onClose}
-          className='flex-shrink-0 p-1 rounded-md hover:bg-black hover:bg-opacity-10 transition-colors'
+          className='shrink-0 p-1 rounded-md hover:bg-black hover:bg-black/10 transition-colors'
           aria-label='Close alert'
           type='button'
         >

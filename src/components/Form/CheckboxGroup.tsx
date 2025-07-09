@@ -55,7 +55,7 @@ export const CheckboxGroup = <TFieldValues extends FieldValues>({
                   value={option.value}
                   disabled={option.disabled}
                   {...form.register(name)}
-                  className={`h-4 w-4 text-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-inset border-gray-300 rounded
+                  className={`h-4 w-4 text-indigo-600 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-inset border-gray-300 rounded
                       ${errorMessage ? 'border-red-500' : ''}
                       ${option.disabled ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : ''}`}
                 />

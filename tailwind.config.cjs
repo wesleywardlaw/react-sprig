@@ -1,8 +1,9 @@
 // tailwind.config.js
 module.exports = {
   content: [
-    './src/**/*.{js,jsx,ts,tsx}', // adjust based on project structure
-    './src/**/*.stories.@(js|jsx|ts|tsx)',
+    './src/**/*.{js,jsx,ts,tsx,mdx}', // adjust based on project structure
+    './src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    './.storybook/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     screens: {
@@ -63,11 +64,11 @@ module.exports = {
         },
       },
       spacing: {
-        xs: '0.25rem',
-        sm: '0.5rem',
-        md: '1rem',
-        lg: '1.5rem',
-        xl: '2rem',
+        spacingXs: '0.25rem',
+        spacingSm: '0.5rem',
+        spacingMd: '1rem',
+        spacingLg: '1.5rem',
+        spacingXl: '2rem',
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],

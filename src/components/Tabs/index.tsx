@@ -78,7 +78,7 @@ export function Tabs({
 
   const getTabStyles = () => {
     const baseStyles =
-      'relative inline-flex items-center justify-center font-medium m-1 mb-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+      'relative inline-flex items-center justify-center font-medium m-1 mb-0 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
 
     const sizeStyles = {
       sm: 'px-10 py-1.5 text-sm',
@@ -150,7 +150,7 @@ export function Tabs({
             role='tabpanel'
             tabIndex={0}
             aria-labelledby={`tab-${tab.id}`}
-            className={`focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg ${
+            className={`focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg ${
               activeTab === tab.id ? 'block' : 'hidden'
             }`}
           >

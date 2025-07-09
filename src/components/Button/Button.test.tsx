@@ -19,7 +19,9 @@ describe('Button Component', () => {
     render(<Button {...defaultProps} />)
     const button = screen.getByRole('button', { name: /click me/i })
     expect(button).toBeInTheDocument()
-    expect(button).toHaveClass('btn-medium btn-primary')
+    expect(button).toHaveClass(
+      'bg-blue-600 text-white hover:bg-blue-500 focus:ring-blue-300 px-6 py-3 text-base'
+    )
   })
 
   it('renders the button with loading state', () => {

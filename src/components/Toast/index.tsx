@@ -149,7 +149,7 @@ const ToastItem: React.FC<{ toast: Toast }> = ({ toast }) => {
       case 'success':
         return (
           <svg
-            className='w-5 h-5 text-green-500 flex-shrink-0'
+            className='w-5 h-5 text-green-500 shrink-0'
             fill='currentColor'
             viewBox='0 0 20 20'
           >
@@ -163,7 +163,7 @@ const ToastItem: React.FC<{ toast: Toast }> = ({ toast }) => {
       case 'error':
         return (
           <svg
-            className='w-5 h-5 text-red-500 flex-shrink-0'
+            className='w-5 h-5 text-red-500 shrink-0'
             fill='currentColor'
             viewBox='0 0 20 20'
           >
@@ -177,7 +177,7 @@ const ToastItem: React.FC<{ toast: Toast }> = ({ toast }) => {
       case 'warning':
         return (
           <svg
-            className='w-5 h-5 text-yellow-500 flex-shrink-0'
+            className='w-5 h-5 text-yellow-500 shrink-0'
             fill='currentColor'
             viewBox='0 0 20 20'
           >
@@ -191,7 +191,7 @@ const ToastItem: React.FC<{ toast: Toast }> = ({ toast }) => {
       case 'info':
         return (
           <svg
-            className='w-5 h-5 text-blue-500 flex-shrink-0'
+            className='w-5 h-5 text-blue-500 shrink-0'
             fill='currentColor'
             viewBox='0 0 20 20'
           >
@@ -223,7 +223,7 @@ const ToastItem: React.FC<{ toast: Toast }> = ({ toast }) => {
         {toast.action && (
           <button
             onClick={toast.action.onClick}
-            className='text-sm font-medium underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded'
+            className='text-sm font-medium underline hover:no-underline focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded'
           >
             {toast.action.label}
           </button>
@@ -231,7 +231,7 @@ const ToastItem: React.FC<{ toast: Toast }> = ({ toast }) => {
 
         <button
           onClick={handleClose}
-          className='text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 rounded p-1'
+          className='text-gray-400 hover:text-gray-600 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 rounded p-1'
           aria-label='Close notification'
         >
           <svg

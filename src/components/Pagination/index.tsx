@@ -52,7 +52,7 @@ export function Pagination({
             id='pageSize'
             value={pageSize}
             onChange={(e) => onPageSizeChange(Number(e.target.value))}
-            className='border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+            className='border border-gray-300 rounded px-2 py-1 text-sm focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
           >
             {pageSizeOptions.map((size) => (
               <option
@@ -69,7 +69,7 @@ export function Pagination({
           <button
             onClick={() => onPageChange(0)}
             disabled={currentPage === 0}
-            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visbile:ring-2 focus-visible:ring-blue-500 rounded'
+            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-hidden focus-visbile:ring-2 focus-visible:ring-blue-500 rounded'
             aria-label='Go to first page'
           >
             <ChevronsLeft className='w-4 h-4' />
@@ -77,7 +77,7 @@ export function Pagination({
           <button
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 0}
-            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded'
+            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 rounded'
             aria-label='Go to previous page'
           >
             <ChevronLeft className='w-4 h-4' />
@@ -90,7 +90,7 @@ export function Pagination({
           <button
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage >= totalPages - 1}
-            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded'
+            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 rounded'
             aria-label='Go to next page'
           >
             <ChevronRight className='w-4 h-4' />
@@ -98,7 +98,7 @@ export function Pagination({
           <button
             onClick={() => onPageChange(totalPages - 1)}
             disabled={currentPage >= totalPages - 1}
-            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded'
+            className='p-2 text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 rounded'
             aria-label='Go to last page'
           >
             <ChevronsRight className='w-4 h-4' />
@@ -124,12 +124,12 @@ export function Pagination({
                 handleGoToPage()
               }
             }}
-            className='w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+            className='w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
             placeholder='Page'
           />
           <button
             onClick={handleGoToPage}
-            className='px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+            className='px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
           >
             Go
           </button>

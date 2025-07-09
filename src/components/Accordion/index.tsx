@@ -53,7 +53,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
             `
             flex justify-between items-center w-full px-4 py-3 text-left
             bg-gray-50 hover:bg-gray-100 focus:bg-gray-100
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-inset
+            focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-inset
             transition-all duration-200 rounded-lg
             ${disabled ? 'opacity-50 cursor-not-allowed focus-visible:ring-gray-400' : 'cursor-pointer'}
             ${isOpen ? 'rounded-b-none' : ''}

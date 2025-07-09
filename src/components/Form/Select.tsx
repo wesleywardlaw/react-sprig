@@ -49,7 +49,7 @@ export const Select = <TFieldValues extends FieldValues>({
         aria-invalid={!!errorMessage}
         aria-describedby={errorId}
         aria-live='polite'
-        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 ${
+        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 focus:outline-hidden focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 ${
           errorMessage ? 'border-red-500' : ''
         } ${disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : ''} ${className}`}
       >

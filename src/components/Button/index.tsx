@@ -1,9 +1,8 @@
 import React, { ReactNode, ButtonHTMLAttributes, useRef } from 'react'
 import { FaSpinner } from 'react-icons/fa'
-import './Button.css'
 
 type ButtonSize = 'small' | 'medium' | 'large' | string
-type ButtonColor = 'primary' | 'danger' | 'success' | 'secondary' | 'outline' | string
+type ButtonColor = 'primary' | 'danger' | 'success' | 'secondary' | 'outline-solid' | string
 type IconPosition = 'before' | 'after'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -36,28 +35,31 @@ export const Button: React.FC<ButtonProps> = ({
   const buttonRef = useRef<HTMLButtonElement | null>(null)
 
   const sizeClasses: Record<string, string> = {
-    small: 'btn-small',
-    medium: 'btn-medium',
-    large: 'btn-large',
+    small: 'px-4 py-2 text-sm',
+    medium: 'px-6 py-3 text-base',
+    large: 'px-8 py-4 text-lg',
   }
 
   const colorClasses: Record<string, string> = {
-    primary: 'btn-primary',
-    danger: 'btn-danger',
-    success: 'btn-success',
-    secondary: 'btn-secondary',
-    outline: 'btn-outline',
+    primary: 'bg-blue-600 text-white hover:bg-blue-500 focus:ring-blue-300',
+    danger: 'bg-red-600 text-white hover:bg-red-500 focus:ring-red-300',
+    success: 'bg-green-600 text-white hover:bg-green-500 focus:ring-green-300',
+    secondary: 'bg-gray-600 text-white hover:bg-gray-500 focus:ring-gray-300',
+    outline: 'border border-gray-500 text-gray-600 hover:bg-gray-100 focus:ring-gray-300',
   }
 
   const loadingSpinner = <FaSpinner className='animate-spin h-5 w-5 mr-2' />
 
   const buttonClasses = `
     relative inline-flex items-center justify-center font-semibold rounded-md transition-all
+    focus:outline-none focus:ring-2 focus:ring-offset-2
     ${sizeClasses[size] || ''} ${colorClasses[color] || ''}
-    ${disabled ? 'opacity-50 cursor-not-allowed' : 'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-inset'}
+    ${disabled || loading ? 'opacity-50 cursor-not-allowed' : ''}
     ${fullWidth ? 'w-full' : ''}
     ${className}
   `
+    .trim()
+    .replace(/\s+/g, ' ')
 
   const iconContent =
     icon && !loading ? (

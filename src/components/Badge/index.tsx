@@ -52,7 +52,7 @@ export const Badge: React.FC<BadgeProps> = ({
   id,
 }) => {
   const baseStyles =
-    'inline-flex items-center font-medium rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
+    'inline-flex items-center font-medium rounded-full border transition-colors focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : ''
 
   const badgeClasses = `
@@ -93,7 +93,7 @@ export const Badge: React.FC<BadgeProps> = ({
       {removable && (
         <button
           type='button'
-          className={`ml-1 inline-flex items-center justify-center w-4 h-4 text-current hover:bg-black hover:bg-opacity-10 rounded-full focus:outline-none focus:bg-black focus:bg-opacity-10 ${
+          className={`ml-1 inline-flex items-center justify-center w-4 h-4 text-current hover:bg-black hover:bg-black/10 rounded-full focus:outline-hidden focus:bg-black focus:bg-opacity-10 ${
             disabled ? 'cursor-not-allowed' : 'cursor-pointer'
           }`}
           onClick={handleRemove}

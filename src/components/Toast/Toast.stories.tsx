@@ -41,7 +41,7 @@ const ToastDemo: React.FC<{
     <div className='flex justify-center'>
       <button
         onClick={showToast}
-        className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+        className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
       >
         Show {type} Toast
       </button>

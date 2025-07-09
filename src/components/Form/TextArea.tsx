@@ -43,7 +43,7 @@ export const TextArea = ({
       id={textAreaId}
       {...form.register(name, { onChange })}
       rows={rows}
-      className={`w-full px-3 py-2 border rounded-lg bg-gray-50 text-gray-900 focus:ring-2 focus:outline-none ${
+      className={`w-full px-3 py-2 border rounded-lg bg-gray-50 text-gray-900 focus:ring-2 focus:outline-hidden ${
         error
           ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
           : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'

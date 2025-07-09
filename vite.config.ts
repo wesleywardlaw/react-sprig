@@ -13,7 +13,8 @@ import { configDefaults } from 'vitest/config'
 export default defineConfig({
   plugins: [
     react(),
-    libInjectCss(),
+    // Only include libInjectCss if not running Storybook
+    ...(process.env.STORYBOOK === 'true' ? [] : [libInjectCss()]),
     dts({
       exclude: ['**/*.stories.tsx', 'src/test', '**/*.test.tsx'],
       tsconfigPath: 'tsconfig.app.json',

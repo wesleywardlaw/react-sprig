@@ -5,6 +5,13 @@ import { Button } from '../Button'
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
   component: Card,
+  decorators: [
+    (Story) => (
+      <div className='flex justify-center p-4'>
+        <Story />
+      </div>
+    ),
+  ],
   subcomponents: {
     'Card.Title': Card.Title as React.ComponentType<unknown>,
     'Card.Content': Card.Content as React.ComponentType<unknown>,
@@ -82,5 +89,32 @@ export const CustomStyled: Story = {
         <Button color='danger'>Decline</Button>
       </Card.Actions>
     </Card>
+  ),
+}
+
+// Example showing multiple cards centered
+export const MultipleCards: Story = {
+  decorators: [
+    (Story) => (
+      <div className='flex justify-center gap-4 p-4 flex-wrap'>
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => (
+    <>
+      <Card>
+        <Card.Title>Card 1</Card.Title>
+        <Card.Content>
+          <p>First card content</p>
+        </Card.Content>
+      </Card>
+      <Card>
+        <Card.Title>Card 2</Card.Title>
+        <Card.Content>
+          <p>Second card content</p>
+        </Card.Content>
+      </Card>
+    </>
   ),
 }

@@ -85,7 +85,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         ref={buttonRef}
         onClick={handleButtonClick}
         onKeyDown={handleKeyDown}
-        className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+        className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 ${
           isMobile ? 'w-full justify-between text-left' : ''
         }`}
         aria-expanded={isOpen}
@@ -118,7 +118,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               {child.href ? (
                 <a
                   href={child.href}
-                  className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                  className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 ${
                     isMobile ? 'rounded-md' : 'first:rounded-t-md last:rounded-b-md'
                   }`}
                   role='menuitem'
@@ -129,7 +129,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               ) : (
                 <button
                   onClick={() => handleItemClick(child)}
-                  className={`w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                  className={`w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 ${
                     isMobile ? 'rounded-md' : 'first:rounded-t-md last:rounded-b-md'
                   }`}
                   role='menuitem'
@@ -196,11 +196,11 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
       <div className='mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16'>
           {brand && (
-            <div className='flex-shrink-0'>
+            <div className='shrink-0'>
               {brand.href ? (
                 <a
                   href={brand.href}
-                  className='text-xl font-bold text-gray-900 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md px-2 py-1'
+                  className='text-xl font-bold text-gray-900 hover:text-gray-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md px-2 py-1'
                   onClick={brand.onClick}
                 >
                   {brand.label}
@@ -208,7 +208,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
               ) : (
                 <button
                   onClick={brand.onClick}
-                  className='text-xl font-bold text-gray-900 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md px-2 py-1'
+                  className='text-xl font-bold text-gray-900 hover:text-gray-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md px-2 py-1'
                 >
                   {brand.label}
                 </button>
@@ -216,7 +216,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
             </div>
           )}
 
-          <div className='hidden md:flex ml-10 items-center flex-grow justify-evenly'>
+          <div className='hidden md:flex ml-10 items-center grow justify-evenly'>
             {items.map((item, index) => (
               <div
                 key={index}
@@ -232,7 +232,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
                 ) : item.href ? (
                   <a
                     href={item.href}
-                    className='px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+                    className='px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
                     onClick={() => handleItemClick(item)}
                   >
                     {item.label}
@@ -240,7 +240,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
                 ) : (
                   <button
                     onClick={() => handleItemClick(item)}
-                    className='px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+                    className='px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
                   >
                     {item.label}
                   </button>
@@ -252,7 +252,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
           <div className='md:hidden ml-auto'>
             <button
               onClick={toggleMobileMenu}
-              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
               aria-expanded={isMobileMenuOpen}
               aria-label='Toggle navigation menu'
             >
@@ -287,7 +287,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
                   ) : item.href ? (
                     <a
                       href={item.href}
-                      className='block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+                      className='block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
                       onClick={() => handleItemClick(item)}
                     >
                       {item.label}
@@ -295,7 +295,7 @@ export const Navigation: React.FC<NavigationProps> = ({ items, brand, className 
                   ) : (
                     <button
                       onClick={() => handleItemClick(item)}
-                      className='w-full text-left block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+                      className='w-full text-left block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500'
                     >
                       {item.label}
                     </button>

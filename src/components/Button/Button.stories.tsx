@@ -21,10 +21,10 @@ const meta: Meta<typeof Button> = {
     },
     color: {
       control: { type: 'select' },
-      options: ['primary', 'danger', 'success', 'secondary', 'outline'],
+      options: ['primary', 'danger', 'success', 'secondary', 'outline-solid'],
       description: 'Button color variant',
       table: {
-        type: { summary: 'primary | danger | success | secondary | outline' },
+        type: { summary: 'primary | danger | success | secondary | outline-solid' },
         defaultValue: { summary: 'primary' },
       },
     },
@@ -163,7 +163,7 @@ export const Secondary: Story = {
 export const Outline: Story = {
   args: {
     children: 'Outline Button',
-    color: 'outline',
+    color: 'outline-solid',
   },
 }
 

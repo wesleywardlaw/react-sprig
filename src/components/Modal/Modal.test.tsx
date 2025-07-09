@@ -84,7 +84,7 @@ describe('Modal', () => {
     // Find the overlay by role or fallback to querySelector
     const overlays = Array.from(document.querySelectorAll('[class*="bg-"]'))
     const overlay = overlays.find(
-      (el) => el.className.includes('bg-black') && el.className.includes('bg-opacity-75')
+      (el) => el.className.includes('bg-black') && el.className.includes('bg-black/75')
     )
     expect(overlay).toBeTruthy()
     const content = screen.getByText('Test Modal').closest('[role="dialog"]')
