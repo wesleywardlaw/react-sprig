@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://www.github.com/wesleywardlaw/react-sprig/compare/v2.4.1...v2.5.0) (2025-07-09)
+
+
+### Features
+
+* upgrade to tailwind 4 ([7a95850](https://www.github.com/wesleywardlaw/react-sprig/commit/7a95850b9be508d7b5e0cdcd874d7937c9bc1cb5))
+
 ### [2.4.1](https://www.github.com/wesleywardlaw/react-sprig/compare/v2.4.0...v2.4.1) (2025-06-25)
 
 
